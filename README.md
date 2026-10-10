@@ -15,7 +15,7 @@
 
 ## Beta availability
 
-Download **`NiroWear-0.1.0-beta.1.apk`** from [Beta releases](https://github.com/michaelxdips/NiroWear-Beta/releases). Until final verification completes, the release remains a private draft. No Play Store installation is available.
+**Beta published:** [download `NiroWear-0.1.0-beta.1.apk`](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.1/NiroWear-0.1.0-beta.1.apk) · [release notes](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.1). No Play Store installation is available.
 
 APK SHA256: `25b091753743c5b439bb1413525ddef9f69a28d81bd7dae9773013e32605fdb7`.
 
