@@ -15,7 +15,9 @@
 
 ## Beta availability
 
-**Beta download not yet published.** Signing approval is pending. When approved, Releases will contain exactly one APK: `NiroWear-0.1.0-beta.1.apk`. No Play Store installation is available.
+Download **`NiroWear-0.1.0-beta.1.apk`** from [Beta releases](https://github.com/michaelxdips/NiroWear-Beta/releases). Until final verification completes, the release remains a private draft. No Play Store installation is available.
+
+APK SHA256: `25b091753743c5b439bb1413525ddef9f69a28d81bd7dae9773013e32605fdb7`.
 
 This repository is a binary-beta landing page, not the application source repository. Native math and physical-device acceptance remain beta evaluation work, not completed production-release claims.
 
@@ -58,6 +60,8 @@ Android API 30 or newer is required, on a Wear OS device. Reference emulator: We
 6. Choose Keyboard or Voice, review text, then Send. Scroll upward to detach; Latest returns to current content.
 
 Existing installations require the same signing certificate for updates. Do not uninstall or clear valuable history to work around a signature mismatch. Approved future updates will use increasing version codes and the established beta identity.
+
+Owner approved the existing Android Debug certificate for this beta update identity, not for production: SHA256 `7d4e6e99821d904f23900bd4e0cad5b64b1a2733a28243dcc8ab9d6e2768abe3`. Release APK is nondebuggable. This signing identity is beta-only; do not treat it as production-grade trust.
 
 ## Privacy & security
 
