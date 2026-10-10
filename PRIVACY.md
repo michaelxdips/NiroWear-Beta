@@ -24,4 +24,4 @@ Voice delegates to your installed system recognizer; microphone use and any remo
 
 GitHub Issues are public in this landing repository. Submit only nonsecret reproduction details. Do not submit keys, headers, credentials, pairing secrets, private conversation exports or protected editor captures. Remove personal information from screenshots before sharing.
 
-Beta does not add analytics or crash-reporting SDKs. Publisher-specific legal/contact terms must be approved before external binary publication; this page alone does not establish that approval.
+Beta does not add analytics or crash-reporting SDKs. This disclosure accompanies the owner-authorized binary beta; selected endpoint policies still apply. Report NiroWear privacy concerns through a nonsecret GitHub Issue, not by posting credentials or private conversations.
