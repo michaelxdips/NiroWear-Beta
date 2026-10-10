@@ -77,6 +77,7 @@ Your key and conversation context go directly to your selected endpoint for requ
 - External links depend on Wear/phone handlers; destination completion has not been accepted in the available setup.
 - Not all adapters have genuine live upstream smoke coverage. Custom endpoints may differ from official services.
 - Protected provider-editor human visual review and complete hardware accessibility acceptance remain outstanding.
+- Fresh release pan-endpoint automation was limited by host History-row targeting; native formula typesetting is not claimed. Current controlled debug gesture tests passed.
 
 ## Feedback
 
