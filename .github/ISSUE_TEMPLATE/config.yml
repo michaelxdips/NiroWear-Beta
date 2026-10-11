@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: User guide
+    url: https://github.com/michaelxdips/NiroWear-Beta/blob/main/docs/USER_GUIDE.md
+    about: Installation, provider setup, and published beta controls.
+  - name: Troubleshooting and FAQ
+    url: https://github.com/michaelxdips/NiroWear-Beta/blob/main/docs/TROUBLESHOOTING.md
+    about: Safe recovery steps before reporting or resetting anything.
+  - name: Private vulnerability reporting
+    url: https://github.com/michaelxdips/NiroWear-Beta/security/advisories/new
+    about: Report security vulnerabilities and sensitive reproduction details privately, never in a public issue.

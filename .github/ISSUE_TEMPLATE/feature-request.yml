@@ -1,16 +1,16 @@
-name: Feature request
-description: Explain a watch-first user problem without sensitive data.
+name: Documentation or released-feature feedback
+description: Suggest documentation fixes or improvements to existing released behavior.
 body:
   - type: markdown
     attributes:
       value: |
-        This request is public. Describe the problem with a synthetic example, not private chat content.
+        This request is public. Describe documentation or existing released behavior with a synthetic example, not private chat content. Suggestions do not imply accepted commitments or source access.
         Never include API keys, authentication headers, provider credentials, pairing codes, conversation exports or unredacted secure-screen captures. For security concerns, follow SECURITY.md; do not post exploit details here.
   - type: textarea
     id: problem
     attributes:
       label: User problem
-      description: What is difficult or missing in your current NiroWear experience?
+      description: Which current documentation page or released control is unclear or difficult to use?
     validations:
       required: true
   - type: textarea

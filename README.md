@@ -4,188 +4,133 @@
 
 **Your AI. Your key. On your wrist.**
 
-Wear OS chat with keyboard, system voice input and streamed answers built for reading—not oversized chat bubbles.
+An AI chat app for Wear OS: bring your own API key, choose a model, and read streamed answers on your watch.
 
 **Public beta · 0.1.0-beta.1 · Sideload only**
 
-[Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.1/NiroWear-0.1.0-beta.1.apk) · [Release notes](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.1) · [Feedback](https://github.com/michaelxdips/NiroWear-Beta/issues/new/choose)
+[Download the published APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.1/NiroWear-0.1.0-beta.1.apk) · [Release notes](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.1)
 
 </div>
 
-## Watch-first, full-length answers
+## Start here
 
-Bring your own provider, choose your model, ask by keyboard or voice, then read complete answers as a scrollable document. Long answers stay long; layout adapts to the watch.
+- [User guide](docs/USER_GUIDE.md): installation, provider setup, first chat, and reading controls.
+- [Troubleshooting and FAQ](docs/TROUBLESHOOTING.md): safe recovery steps and known limitations.
+- [Contribute](CONTRIBUTING.md): improve public docs and tooling, share device or accessibility feedback, or request collaboration.
+- [Report a problem](https://github.com/michaelxdips/NiroWear-Beta/issues/new/choose): nonconfidential bugs and feedback.
+
+**Contributors welcome.** Documentation fixes, public repository tooling PRs, test cases, and careful device/accessibility feedback all help. Application source is private and proprietary; source collaboration requires an owner-reviewed [collaboration issue](https://github.com/michaelxdips/NiroWear-Beta/issues/new?template=developer-collaboration.yml), not an automatic access grant.
+
+## See it on a round screen
 
 <table>
   <tr>
-    <td align="center"><img src="docs/screenshots/chat-home.png" width="200" height="200" alt="NiroWear chat home with keyboard and voice input icons" /><br /><strong>Ask from your wrist</strong></td>
-    <td align="center"><img src="docs/screenshots/real-response.png" width="200" height="200" alt="Real AI answer in NiroWear document reader" /><br /><strong>Read full answers</strong></td>
+    <td align="center"><img src="docs/screenshots/chat-home.png" width="144" height="144" alt="NiroWear chat home with keyboard and voice input icons" /><br /><strong>Keyboard and voice</strong></td>
+    <td align="center"><img src="docs/screenshots/real-response.png" width="144" height="144" alt="An AI answer displayed in the NiroWear document reader" /><br /><strong>Full answers</strong></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/screenshots/streaming-stop.png" width="200" height="200" alt="Answer streaming with Stop control visible" /><br /><strong>Stream + Stop</strong></td>
-    <td align="center"><img src="docs/screenshots/table-record.png" width="200" height="200" alt="Markdown table adapted into labeled records" /><br /><strong>Watch-sized tables</strong></td>
+    <td align="center"><img src="docs/screenshots/streaming-stop.png" width="144" height="144" alt="An answer streaming with the Stop control visible" /><br /><strong>Streaming and Stop</strong></td>
+    <td align="center"><img src="docs/screenshots/table-record.png" width="144" height="144" alt="A Markdown table shown as labeled vertical records" /><br /><strong>Watch-sized tables</strong></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/screenshots/code-reader.png" width="200" height="200" alt="Kotlin code block in horizontally pannable reader" /><br /><strong>Readable code</strong></td>
-    <td align="center"><img src="docs/screenshots/history.png" width="200" height="200" alt="Saved conversations in NiroWear History" /><br /><strong>Keep conversations</strong></td>
+    <td align="center"><img src="docs/screenshots/code-reader.png" width="144" height="144" alt="A Kotlin code block in a horizontally pannable reader" /><br /><strong>Readable code</strong></td>
+    <td align="center"><img src="docs/screenshots/history.png" width="144" height="144" alt="Saved conversations in NiroWear History" /><br /><strong>Local history</strong></td>
   </tr>
 </table>
 
-Six genuine, uncropped 466 × 466 captures from the preceding signed validation candidate. No mock UI or generated artwork. Beta.1 removes developer fixture packaging; visible product design is unchanged. Each image shows one scroll/pan viewport, not an entire answer fitted onto one screen.
+Six real, uncropped 466 × 466 emulator captures. Each shows one scroll or pan position, not an entire answer squeezed onto one screen. These are not mockups or proof of physical-watch compatibility.
 
-## Features and controls
+## What the published beta does
 
-### BYOK with secure key entry
+### Choose your provider and model
 
-Tap the top header to open **Menu**, then **Providers / model**. Choose **Add OpenAI**, **Add Anthropic**, **Add Gemini** or **Add compatible**. Fields: **Name**, **Base URL**, **Manual model ID**, **API key**.
+NiroWear connects directly to your configured HTTPS API endpoint using your own key. Four choices are available in **Menu → Providers / model**:
 
-Keys start masked; **Reveal key** / **Hide key** affect current entry only. **Save securely** stores Android Keystore-backed AES-GCM ciphertext; profiles hold credential references, not plaintext keys. **Edit / replace key** opens with a blank key field: leave it blank to retain the saved key. Decryption failure requires re-entry, never plaintext fallback. Provider screens use secure-window protection.
+| Add option | Supported generation API |
+|---|---|
+| **Add OpenAI** | OpenAI Responses |
+| **Add Anthropic** | Anthropic Messages |
+| **Add Gemini** | Gemini streaming GenerateContent |
+| **Add compatible** | OpenAI-compatible Chat Completions |
 
-### Four adapters—not one guessed protocol
+Choose the API your endpoint supports; a model name does not establish its protocol or who operates it. Live coverage across all four upstream services is incomplete.
 
-| Entry | Generation API | Model discovery |
-|---|---|---|
-| **Add OpenAI** | Native OpenAI Responses | Dynamic IDs; listing does not establish text-generation compatibility |
-| **Add Anthropic** | Native Anthropic Messages | Paginated model catalog |
-| **Add Gemini** | Native Google Gemini GenerateContent streaming | Paginated catalog filtered for `generateContent` support |
-| **Add compatible** | OpenAI-compatible Chat Completions | Endpoint-dependent; manual ID works without discovery |
+**Discover models** retrieves a catalog; **Manual model ID** lets you enter an exact ID, including when compatible-endpoint discovery is unavailable. A listed model is not necessarily usable for text generation. **Validate · uses API** sends a small generation request and can incur charges. Saving a new profile does not itself prove generation works. Replacing a saved key requires validation and performs another validation during save.
 
-**Discover models** lists choices; it is not proof that the selected model can generate. **Validate · uses API** performs a generation request to check credential access and selected-model usability, and can incur provider charges. Discovery, authentication and generation are separate outcomes. Saving a new profile is not a successful generation test; replacing a saved key requires validation, including a check during secure save.
+Key entry is masked. Saved keys use Android Keystore-backed AES-GCM encryption; editing a profile never fills its saved key into the input field. Leave that field blank to retain the existing key. Secure-storage failure requires re-entry, with no plaintext fallback.
 
-Native Responses and compatible Chat Completions are distinct adapters. Select the protocol your endpoint supports; model names do not choose protocols or prove official upstream identity. Implemented adapters do not mean every upstream service has genuine live acceptance.
+### Ask, stream, and revise
 
-### Manual models and mid-chat switching
+- **Keyboard:** open **Prompt**, type with your installed Wear keyboard, then tap **Send**.
+- **Voice:** use the system speech recognizer, then review or correct returned text in **Prompt** before sending. Recognizer availability varies; real spoken transcription has not been fully verified.
+- **Streaming:** read answers as they arrive. **Stop** cancels the client request and keeps received partial text. It cannot guarantee that the provider stops computation or billing.
+- **Retry:** the circular-arrow control, labeled **Retry response** for accessibility, replaces the latest assistant response with a new request using the selected provider/model. No alternate versions are kept.
+- **Edit:** long-press an earlier user message, change it, then choose **Edit & resend**. This replaces that message and permanently deletes every later message in that conversation before generating a new continuation. There is no branch or undo copy.
 
-Enter **Manual model ID** or select a discovered ID. Compatible endpoints remain usable when model discovery fails; NiroWear does not silently choose another model.
+Retry and edit/resend are explicit new API requests and may incur charges. Failed or interrupted streams are not automatically replayed. Provider/model switching is available while idle and keeps the same linear conversation; earlier assistant messages retain their original provider/model labels.
 
-While idle, open **Providers / model** and tap a profile to select it, or use **Edit / replace key** to change its model and **Save securely**. Switching preserves one linear conversation. Each assistant message retains the provider profile ID and model ID that produced it; a later switch does not rewrite earlier provenance. Providers/model switching is disabled during generation.
+### Read and return
 
-### Keyboard input
-
-Tap the keyboard icon, accessibility label **Keyboard input**, to open **Prompt**. Tap the text field to use your installed Wear keyboard, then **Send**. Keyboard input remains available when voice recognition is missing.
-
-### System voice input
-
-Tap the microphone icon, accessibility label **Voice input**. NiroWear delegates to the installed system speech recognizer. Returned text opens **Prompt** for review or correction before **Send**; speech is not automatically sent to your AI provider. Recognizer availability and speech processing depend on your system setup. Real spoken-transcription acceptance remains outstanding.
-
-### Streamed reader and Stop
-
-Answers arrive incrementally through direct-to-provider requests and render as document blocks. **Stop** cancels the underlying HTTP call and retains partial content with stopped status. Interrupted or failed streams keep received text; NiroWear does not automatically replay them. Input resumes after generation settles.
-
-Stop cannot guarantee that remote computation or billing stops. Requests go to your configured endpoint, whose policies and charges apply.
-
-### Retry
-
-After an assistant turn, scroll to the circular-arrow icon, accessibility label **Retry response**. Retry removes the latest assistant response and generates a new continuation from the preceding user turn, using the currently selected provider/model. No alternate variants or branches. Retry is an explicit new API request and can incur charges.
-
-### Linear Edit
-
-While idle, long-press an earlier user message to open **Prompt**, then choose **Edit & resend**.
-
-**This replaces that user message and permanently deletes every later message in that conversation before requesting a new continuation. There is no branch or undo copy.**
-
-### History and New chat
-
-**Menu**, then **History**, opens saved conversations. Tap a title to resume. Raw user/assistant content, including original assistant Markdown and provider/model provenance, stays in local application data.
-
-**New chat**, available in Menu and History while idle, starts a separate conversation without deleting existing ones. History has no NiroWear cloud backup. Conversation text is not separately encrypted; clearing app data or uninstalling can permanently remove it.
-
-### Latest without forced scrolling
-
-Near the bottom, the reader follows incoming content. Scroll upward to read earlier text without being pulled back down. A down-arrow icon, accessibility label **Jump to latest**, returns to the current tail. This is the **Latest** action; it is an icon, not a text button.
-
-### Markdown
-
-Headings, paragraphs, bullet and numbered lists, quotes, bold/italic text, inline code and dividers render as semantic blocks. Assistant output is not one giant text node. Raw Markdown remains stored so rendering can evolve without losing the original response.
-
-### Unicode and symbols
-
-Unicode text—including Greek letters, mathematical operators and non-Latin scripts—uses Android system font fallback. Readability still depends on available device fonts; broad physical-watch typography and accessibility acceptance is not complete.
-
-### Code blocks
-
-Fenced code uses monospace text and preserves source formatting, with a language label when supplied. Pan horizontally inside wide code blocks; scroll vertically through the document. NiroWear does not shrink whole code samples to fit the round screen.
-
-### Tables
-
-Markdown tables become vertical records: each cell follows its column heading. Rows remain readable without squeezing a desktop grid onto the watch. Scroll to read all records.
-
-### Math: readable source, not native typesetting
-
-Beta.1 retains Unicode math and LaTeX source for inline/display formulas, fractions, roots, powers/subscripts, calculus, matrices, cases and aligned equations. Wide formulas use horizontal pan rather than unreadable shrinking.
-
-**Native formula typography is unavailable in this beta.** Fractions, matrices and similar LaTeX structures remain source text, not typeset layouts. No debug math engine or math fonts are bundled. Source fallback is a limited-beta exception, not completion of native-math acceptance.
-
-### Links
-
-HTTP(S) links hand off to available Android/Wear handlers. NiroWear has no built-in browser. Opening the final destination depends on watch/phone handlers; complete external-link acceptance remains outstanding.
+- **History** opens saved local conversations. **New chat** starts a separate conversation without deleting existing ones.
+- Near the bottom, the reader follows incoming text. Scroll upward to read earlier content without being pulled back down. The down-arrow **Latest** action, labeled **Jump to latest**, returns to the tail.
+- Assistant answers appear as a scrollable document, not oversized chat bubbles. Detailed answers remain available; ask explicitly for detail, examples, or steps when needed.
+- **Markdown:** paragraphs, headings, lists, quotes, emphasis, inline code, and dividers.
+- **Unicode:** mathematical symbols, Greek letters, and other scripts use device fonts; glyph coverage varies.
+- **Code:** fenced blocks preserve formatting and use monospace text. Pan horizontally inside wide blocks, then scroll vertically through the answer.
+- **Tables:** rows become vertical records with column labels, rather than a tiny desktop grid.
+- **Math:** Unicode and LaTeX source remain readable, with horizontal pan for wide formulas. **Native formula typesetting is unavailable.** Fractions, roots, matrices, cases, and aligned equations remain source text rather than typeset layouts.
+- **Links:** HTTP(S) links hand off to available Android/Wear handlers. There is no built-in browser; reaching the destination depends on your watch/phone setup and has not been fully verified.
 
 ## Download and install
 
-Requires **Wear OS with Android API 30 or newer**. Reference setup: **Wear OS 5 / API 34, round 466 × 466 emulator**. Minimum API does not certify every watch; physical-watch acceptance is not complete. No Play Store release is available.
+The current published release is **0.1.0-beta.1**, published **2026-10-10**. Download the APK, not GitHub's automatic source archives: those contain public landing files, not buildable application source.
 
-### Published beta.1 identity
+Minimum: **Wear OS 3 or newer with Android API 30 or newer**. The reference evaluation setup is a round **466 × 466 Wear OS 5 / API 34 emulator**. Minimum requirements are not a tested-device list; broad physical-watch support is unverified. No Play Store release is available.
 
-| Field | Published value |
+| Published APK identity | Value |
 |---|---|
-| Release | [0.1.0 Beta 1](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.1), published 2026-10-10 |
-| APK | [`NiroWear-0.1.0-beta.1.apk`](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.1/NiroWear-0.1.0-beta.1.apk) |
+| Download | [NiroWear-0.1.0-beta.1.apk](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.1/NiroWear-0.1.0-beta.1.apk) |
 | Package | `com.nirowear` |
 | Version / versionCode | `0.1.0-beta.1` / `2` |
 | Size | 25,994,739 bytes |
-| APK SHA256 | `25b091753743c5b439bb1413525ddef9f69a28d81bd7dae9773013e32605fdb7` |
-| Certificate SHA256 | `7d4e6e99821d904f23900bd4e0cad5b64b1a2733a28243dcc8ab9d6e2768abe3` |
+| SHA256 | `25b091753743c5b439bb1413525ddef9f69a28d81bd7dae9773013e32605fdb7` |
+| Signing certificate SHA256 | `7d4e6e99821d904f23900bd4e0cad5b64b1a2733a28243dcc8ab9d6e2768abe3` |
 
-**Signing warning:** the owner approved the existing Android Debug certificate as this beta's update identity, not as production-grade signing. The published APK is nondebuggable. Local signing recovery was established; off-device recovery remains unverified. Future binary updates require the same approved identity, a new version/tag and a versionCode above `2`; the beta.1 asset must not be silently replaced.
+**Signing caution:** this nondebuggable APK uses an owner-approved Android Debug certificate as its beta update identity. That is not production-grade signing. See [security guidance](SECURITY.md).
 
-Local `0.1.0-beta.2-dev` optimization work is unpublished. It does not change the beta.1 download, hash or certificate above, and is not a claim of a shipped optimized binary.
+1. Download the APK and verify its SHA256 against the value above.
+2. Pair/connect Android SDK Platform Tools with your intended watch using its supported debugging workflow.
+3. Check `adb devices -l`, then install with `adb -s <serial> install NiroWear-0.1.0-beta.1.apk`.
+4. Open NiroWear, tap the top header for **Menu**, and open **Providers / model**.
+5. Add the correct provider type, HTTPS API base, key, and model ID. Choose **Save securely**, return with **Back**, then use the keyboard icon to send a first prompt.
 
-1. Download the linked beta.1 APK and verify its SHA256 against the value above and release notes.
-2. Enable developer options and supported ADB/wireless debugging on your watch. Follow its pairing instructions using Android SDK Platform Tools.
-3. Confirm the target with `adb devices -l`. Where supported, use `adb pair <watch-ip>:<pair-port>` and `adb connect <watch-ip>:<debug-port>`. Keep pairing codes private.
-4. Install only on the intended watch: `adb -s <serial> install NiroWear-0.1.0-beta.1.apk`. For a same-certificate update, use `adb -s <serial> install -r NiroWear-0.1.0-beta.1.apk`.
-5. Open NiroWear, tap the top header, then **Providers / model**. Add the correct adapter, HTTPS base URL, your own key and model ID; choose **Save securely**. Saving selects that profile.
-6. Return with **Back**. Tap the keyboard or microphone icon, review the prompt, then **Send**.
+The [user guide](docs/USER_GUIDE.md#install-the-apk) includes checksum, pairing, update, and provider setup steps.
 
-**Do not uninstall or clear valuable history to work around a signing mismatch.** Updates require a matching certificate; uninstalling or clearing app data can permanently remove conversations, settings and access to stored keys.
+**Do not uninstall or clear app data to bypass a signing mismatch.** Doing so can permanently remove conversations, settings, and access to stored keys. There is no user-facing conversation export or deletion control in this beta.
 
-This repository contains the public beta landing page, screenshots, notices and feedback forms—not application source. GitHub's automatic source archives contain landing files, not buildable app code. No app build instructions are provided here. NiroWear application source is proprietary, not open-source.
+## Limitations worth knowing
 
-## Known beta limitations
+This is an evaluation beta, not a production-certified release.
 
-- **Software release acceptance remains partial; general availability (GA) is blocked.** Publication is a limited beta, not production acceptance.
-- Complete signed beta.1 reader/table/font/restoration coverage and horizontal-pan endpoints remain partial. Historical signed-reader observations and controlled debug checks are not complete acceptance of this published binary.
-- Native math typography is unavailable; readable/pannable LaTeX source is the beta fallback.
-- Physical-watch touch, battery, thermals, broad compatibility and hardware accessibility remain unaccepted. Protected provider-editor human visual review is also incomplete.
-- System voice intent handling is implemented, but genuine spoken transcription has not completed acceptance.
-- HTTP(S) handoff is implemented, but complete external-link destination acceptance is missing.
-- Broad genuine upstream coverage across all four adapters is incomplete. Genuine network observations used a configured third-party HTTPS Responses endpoint, not verified official upstream identity.
-- Beta-only debug-certificate identity is not production-grade signing; off-device signing recovery is unverified.
+- Full signed-beta reader, table, font, restoration, and horizontal-pan coverage is incomplete.
+- Physical-watch touch, battery, thermals, accessibility, and broad compatibility are not fully verified. Human visual review of the protected provider editor is incomplete.
+- Genuine spoken transcription and complete external-link destinations are not fully verified.
+- Broad live upstream coverage is incomplete. Observed genuine requests used a configured third-party HTTPS Responses endpoint; a displayed model/provider name does not prove official upstream identity.
+- Native math typesetting is unavailable. Source fallback is the actual published behavior.
+- History stays on the device, is not separately encrypted, and has no NiroWear cloud backup. Uninstalling or clearing data can remove it permanently.
 
-## Roadmap
+See [troubleshooting and FAQ](docs/TROUBLESHOOTING.md) before resetting anything.
 
-Acceptance gates, not promised dates or speculative features:
+## Privacy, safety, and feedback
 
-| Stage | Focus |
-|---|---|
-| **Current** | Published limited beta.1; collect nonsecret feedback while keeping download identity and limitations explicit |
-| **Next** | Close signed-reader/pan coverage, physical-watch and protected-editor/accessibility review, real voice/link completion and genuine upstream adapter acceptance; verify off-device signing recovery |
-| **Later** | Native math typography with cleared dependency/font rights, production signing and remaining legal/privacy/distribution acceptance before GA |
+Your key and requested conversation context go to your selected endpoint. Switching providers and sending again shares the retained conversation context with the new endpoint. Its operator controls processing, retention, and charges. There is no separate NiroWear relay or account, and no configured analytics or crash-reporting SDK. System voice processing follows the recognizer's policies. Read [PRIVACY.md](PRIVACY.md).
 
-## Privacy, security and feedback
+AI answers can be false, incomplete, or outdated. Check important claims independently. You are responsible for meeting your provider's account, region, age, and use restrictions; availability in the app is not permission to use a service.
 
-Keys and requested conversation context go directly to your selected endpoint. Its operator controls remote processing, retention and billing. Release requests require HTTPS with platform trust. No separate NiroWear relay, analytics SDK or crash-reporting SDK is configured. Android backup is disabled in the manifest; device-transfer behavior can vary by OEM. System speech processing follows your recognizer's policies. Read [privacy facts](PRIVACY.md) and [security guidance](SECURITY.md).
+**GitHub Issues are public. Never post API keys, authentication headers, pairing codes, private conversations, or unredacted credential-screen captures. Report vulnerabilities through [GitHub private vulnerability reporting](https://github.com/michaelxdips/NiroWear-Beta/security/advisories/new), not public issues.**
 
-[Report a bug or request a feature](https://github.com/michaelxdips/NiroWear-Beta/issues/new/choose). For bugs, include watch model, Wear OS version, beta version, reproduction steps, expected result and actual result. Feature requests should explain the user problem and watch use case. Nonsecret screenshots are optional.
+## Copyright and notices
 
-**GitHub Issues are public. Never post API keys, authentication headers, provider credentials, pairing codes, private conversation exports or unredacted secure-screen captures. Do not post exploit details publicly; follow [SECURITY.md](SECURITY.md).**
+Copyright © 2026 Stephen Michael, for first-party NiroWear material. Application source is proprietary and not open-source. Public availability of this distribution/documentation repository does not grant a blanket reuse license. See [COPYRIGHT.md](COPYRIGHT.md).
 
-## License & Legal
-
-© 2026 Stephen Michael, for first-party NiroWear material only. NiroWear application source is proprietary and is not published here. This landing repository supports beta distribution, documentation, screenshots and feedback; public availability does not grant a blanket reuse license. See [copyright notice](COPYRIGHT.md). No project-wide open-source license is granted.
-
-Third-party components and materials retain their respective owners' rights and license terms; the first-party notice does not claim ownership of them. [Third-party notices](THIRD_PARTY_NOTICES.md) and required license/data materials accompany the application and this repository.
-
-NiroWear is beta software and may contain defects or incomplete behavior. It is not production-certified or commercially supported. Attribution corrections can use a nonconfidential [GitHub Issue](https://github.com/michaelxdips/NiroWear-Beta/issues/new/choose); sensitive security concerns use [private reporting](https://github.com/michaelxdips/NiroWear-Beta/security/advisories/new). See [Changelog](CHANGELOG.md) for published history and unreleased landing-page changes.
-
-AI responses may be false, incomplete or outdated. Independently check factual claims before relying on or sharing them. API availability does not establish that your account, region or intended use meets provider terms.
+Third-party components, icons, and other materials retain their respective owners' rights and license terms. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), [SECURITY.md](SECURITY.md), and [published release history](CHANGELOG.md).

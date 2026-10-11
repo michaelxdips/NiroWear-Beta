@@ -1,0 +1,50 @@
+name: Device and accessibility feedback
+description: Share watch compatibility, input, reading, controls, or accessibility observations.
+title: "[Device/accessibility] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report observations from the published beta, not a compatibility guarantee. No disability, medical information, device serial number, location, or account details are needed.
+
+        This issue is public. Do not include keys, authentication headers, pairing codes, private conversations, raw logs, or credential-screen captures. Use https://github.com/michaelxdips/NiroWear-Beta/security/advisories/new for vulnerabilities. Do not reset valuable app data or spend API credit just to complete this form.
+  - type: input
+    id: version
+    attributes:
+      label: NiroWear version
+      placeholder: "0.1.0-beta.1 (versionCode 2)"
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Watch and OS
+      description: Make/model, Wear OS version, Android API level if known; say physical watch or emulator. Omit serial numbers.
+    validations:
+      required: true
+  - type: input
+    id: settings
+    attributes:
+      label: Relevant display or input setup
+      description: Optional screen size/shape, font size, keyboard, recognizer, or accessibility setting relevant to the interaction.
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps and repeatability
+      description: Exact actions with nonconfidential sample content. Say whether the result repeats and what safe checks you tried.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+      description: Describe the reading, control, input, pan, link, or accessibility problem. Optional screenshots must exclude private content and secure screens.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public issue safety
+      options:
+        - label: This report contains no credentials, private conversations, sensitive personal information, or confidential diagnostics.
+          required: true

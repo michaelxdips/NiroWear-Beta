@@ -1,0 +1,37 @@
+name: Developer collaboration
+description: Propose focused development, tests, documentation, or accessibility collaboration.
+title: "[Collaboration] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Public docs and tooling PRs are welcome without private-source access. Application source is private and proprietary; access requests are reviewed individually by the owner, not automatically granted. This invitation does not promise a CLA, copyright assignment, employment, payment, access, or a source license.
+
+        This issue is public. Do not include API keys, private source, credentials, contact details, private documents, or confidential work samples. Use https://github.com/michaelxdips/NiroWear-Beta/security/advisories/new for vulnerabilities.
+  - type: textarea
+    id: scope
+    attributes:
+      label: Proposed scope
+      description: What specific problem would you help with? Say whether public docs/tooling or owner-reviewed private-source collaboration is needed.
+      placeholder: "Example: improve provider setup instructions with nonconfidential test cases."
+    validations:
+      required: true
+  - type: textarea
+    id: experience
+    attributes:
+      label: Relevant experience or public examples
+      description: Optional skills and public work links. No CV, private repository links, employer-confidential material, or personal contact details needed.
+  - type: textarea
+    id: approach
+    attributes:
+      label: Proposed approach and verification
+      description: Describe a bounded contribution and how you would check it. Device/testing availability is optional; no serial numbers or account details.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public issue safety
+      options:
+        - label: I have excluded secrets and private material, and understand that this request does not automatically grant source access or other rights.
+          required: true

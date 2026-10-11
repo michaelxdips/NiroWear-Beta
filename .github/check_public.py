@@ -15,7 +15,9 @@ LEGAL = {'ANDROIDX-NATIVE-NOTICES.txt', 'APACHE-HARMONY-NOTICE.txt', 'APACHE-HTT
          'LICENSE-809fa1ed2145.txt', 'MATERIAL_ICONS_LICENSE.txt', 'MATERIAL_ICONS_NOTICE.txt', 'MPL-2.0.txt',
          'PROTOBUF-UPSTREAM-SUPPLEMENTAL.txt', 'PUBLIC_SUFFIX_LIST-NOTICE.txt', 'PUBLIC_SUFFIX_LIST.dat',
          'SERIALIZATION-LICENSE.txt', 'SERIALIZATION-NOTICE.txt'}
-ALLOWED = {'README.md', 'PRIVACY.md', 'THIRD_PARTY_NOTICES.md', '.gitignore', 'CHANGELOG.md', 'SECURITY.md', 'COPYRIGHT.md',
+ALLOWED = {'README.md', 'PRIVACY.md', 'THIRD_PARTY_NOTICES.md', '.gitignore', 'CHANGELOG.md', 'SECURITY.md', 'COPYRIGHT.md', 'CONTRIBUTING.md',
+           'docs/USER_GUIDE.md', 'docs/TROUBLESHOOTING.md',
+           '.github/ISSUE_TEMPLATE/developer-collaboration.yml', '.github/ISSUE_TEMPLATE/device-feedback.yml', '.github/ISSUE_TEMPLATE/config.yml',
            '.github/ISSUE_TEMPLATE/bug-report.yml', '.github/ISSUE_TEMPLATE/feature-request.yml',
            '.github/check_public.py', '.github/public-assets.json', '.github/workflows/public-hygiene.yml'}
 ALLOWED |= {'docs/screenshots/' + n for n in SCREENS} | {'docs/licenses/' + n for n in LEGAL}
@@ -27,11 +29,28 @@ def check_text(name, data):
         assert not re.search(r'(?i)([A-Z]:\\(?:Users|Temp)\\|/Users/|/home/|docs/memory/|artifacts/|AGENTS\.md|-----BEGIN [A-Z ]*PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|AIza[A-Za-z0-9_-]{30,})', text), name
     assert not text.startswith('version https://git-lfs.github.com/spec/v1\n'), 'LFS pointer: ' + name
     if name.endswith('.md'):
+        assert not re.search(r'(?im)^#{1,6}\s+(?:roadmap|upcoming features|coming soon|planned architecture|future integrations|internal priorities|unreleased)\b', text), 'Unpublished direction: ' + name
+        assert not re.search(r'(?i)0\.\d+\.\d+-beta\.\d+-dev|docs/memory|internal backlog|release candidate', text), 'Private development disclosure: ' + name
         for pair in re.findall(r'\]\(([^)]+)\)|src="([^"]+)"', text):
-            target = next(x for x in pair if x).split('#')[0]
-            if target and not re.match(r'https?://', target):
-                resolved = (ROOT / name).parent / target
+            link = next(x for x in pair if x)
+            target, _, anchor = link.partition('#')
+            if not re.match(r'https?://', link):
+                resolved = (ROOT / name).parent / target if target else ROOT / name
                 assert resolved.resolve().is_relative_to(ROOT.resolve()) and resolved.is_file(), (name, target)
+                if anchor and resolved.suffix == '.md':
+                    headings = re.findall(r'^#{1,6}\s+(.+?)\s*#*$', resolved.read_text(encoding='utf-8'), re.M)
+                    ids = set()
+                    counts = {}
+                    for heading in headings:
+                        slug = re.sub(r'[^\w\- ]', '', heading.lower()).replace(' ', '-')
+                        count = counts.get(slug, 0)
+                        counts[slug] = count + 1
+                        ids.add(slug + ('-' + str(count) if count else ''))
+                    assert anchor in ids, (name, 'Broken anchor', link)
+        for image in re.findall(r'!\[([^\]]*)\]\(', text):
+            assert image.strip(), 'Missing image alt text: ' + name
+        for tag in re.findall(r'<img\b[^>]*>', text):
+            assert re.search(r'alt="[^"\s][^"]*"', tag), 'Missing image alt text: ' + name
 
 def main():
     disk = {p.relative_to(ROOT).as_posix(): p for p in ROOT.rglob('*')
