@@ -2,6 +2,8 @@
 
 Third-party components retain their own license terms. These notices do not grant a license to NiroWear source code or imply that source is public. Required license, copyright and data-source materials are also packaged in the APK under `assets/legal/`.
 
+Scope: published `0.1.0-beta.1` (versionCode 2). No application-source license is granted; [first-party ownership](COPYRIGHT.md) is separate. Version families below include transitive runtime components, not compiler/test tools or an assertion that every dependency class survives APK optimization.
+
 | Component | Terms and attribution |
 |---|---|
 | AndroidX, Compose, Wear, Room, Activity, Lifecycle and other AndroidX runtime components | [Apache-2.0](docs/licenses/LICENSE-809fa1ed2145.txt); [copyright headers](docs/licenses/ATTRIBUTIONS.txt); [native-code attribution](docs/licenses/ANDROIDX-NATIVE-NOTICES.txt) |
@@ -17,5 +19,7 @@ Third-party components retain their own license terms. These notices do not gran
 | Public Suffix List data bundled by OkHttp | [MPL-2.0](docs/licenses/MPL-2.0.txt), [NOTICE](docs/licenses/PUBLIC_SUFFIX_LIST-NOTICE.txt), [corresponding unmodified source list](docs/licenses/PUBLIC_SUFFIX_LIST.dat) |
 
 Public Suffix List source is supplied here and inside the APK. Its MPL obligations do not require publishing independent NiroWear application source. Native platform math fonts, JLaTeXMath and MicroTeX are not bundled in this beta release configuration.
+
+Apache-2.0 components retain their supplied license, copyright and applicable NOTICE content. Material Keyboard/Voice SVGs were converted to Android vectors; invisible background paths were removed and visible geometry kept. Required change notice is linked above. AndroidX native graphics-path and DataStore shared-counter libraries retain their Apache notices. CommonMark/autolink, embedded protobuf, ThreeTenBP and Boost retain their distinct permissive terms. No modification of Public Suffix List source is asserted; corresponding list source accompanies the compiled data.
 
 Keep applicable notices with copies of the application. Only the APK is a manually uploaded release asset; no separate legal ZIP or private audit archive is needed.
