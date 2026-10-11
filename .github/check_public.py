@@ -21,6 +21,8 @@ ALLOWED = {'README.md', 'PRIVACY.md', 'THIRD_PARTY_NOTICES.md', '.gitignore', 'C
            '.github/ISSUE_TEMPLATE/bug-report.yml', '.github/ISSUE_TEMPLATE/feature-request.yml',
            '.github/check_public.py', '.github/public-assets.json', '.github/workflows/public-hygiene.yml'}
 ALLOWED |= {'docs/screenshots/' + n for n in SCREENS} | {'docs/licenses/' + n for n in LEGAL}
+BRAND = {'docs/branding/nirowear-icon.png', 'docs/branding/nirowear-mark.svg'}
+ALLOWED |= BRAND | {'docs/branding/PROVENANCE.md'}
 
 def check_text(name, data):
     text = data.decode('utf-8')
@@ -57,7 +59,7 @@ def main():
             if p.is_file() and '.git' not in p.relative_to(ROOT).parts}
     assert set(disk) == ALLOWED, {'unexpected': sorted(set(disk) - ALLOWED), 'missing': sorted(ALLOWED - set(disk))}
     immutable = json.loads((ROOT / '.github/public-assets.json').read_text())
-    assert set(immutable) == {'docs/screenshots/' + n for n in SCREENS} | {'docs/licenses/' + n for n in LEGAL}
+    assert set(immutable) == {'docs/screenshots/' + n for n in SCREENS} | {'docs/licenses/' + n for n in LEGAL} | BRAND
     copyright_text = (ROOT / 'COPYRIGHT.md').read_text(encoding='utf-8')
     assert 'Copyright © 2026 Stephen Michael' in copyright_text and 'proprietary' in copyright_text
     assert 'COPYRIGHT.md' in (ROOT / 'README.md').read_text(encoding='utf-8')
@@ -70,7 +72,8 @@ def main():
         if name in immutable:
             assert hashlib.sha256(data).hexdigest() == immutable[name], 'Approved asset changed: ' + name
         if name.endswith('.png'):
-            assert data[:8] == b'\x89PNG\r\n\x1a\n' and struct.unpack('>II', data[16:24]) == (466, 466), name
+            size = (512, 512) if name in BRAND else (466, 466)
+            assert data[:8] == b'\x89PNG\r\n\x1a\n' and struct.unpack('>II', data[16:24]) == size, name
         else:
             check_text(name, data)
     tracked = subprocess.check_output(['git', 'ls-files', '-z'], cwd=ROOT).decode().split('\0')

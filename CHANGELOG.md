@@ -12,6 +12,7 @@ Published binary history and completed public documentation changes.
 - Added security-reporting guidance and this changelog.
 - Clarified proprietary source, first-party copyright and separate third-party rights; linked the copyright notice without granting a blanket reuse license.
 - Kept all six genuine screenshots unchanged. No release asset replacement is recorded here.
+- Added the newly authored Folded Signal repository identity and its AI-assisted/procedural provenance; historical beta.1's icon and APK remain unchanged.
 
 ## 0.1.0-beta.1 — 2026-10-10
 

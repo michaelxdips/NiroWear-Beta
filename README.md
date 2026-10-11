@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/branding/nirowear-icon.png" width="88" height="88" alt="NiroWear Folded Signal mark with mint page facets and lavender continuation accents" />
+
 # NiroWear
 
 **Your AI. Your key. On your wrist.**
@@ -134,3 +136,5 @@ AI answers can be false, incomplete, or outdated. Check important claims indepen
 Copyright © 2026 Stephen Michael, for first-party NiroWear material. Application source is proprietary and not open-source. Public availability of this distribution/documentation repository does not grant a blanket reuse license. See [COPYRIGHT.md](COPYRIGHT.md).
 
 Third-party components, icons, and other materials retain their respective owners' rights and license terms. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), [SECURITY.md](SECURITY.md), and [published release history](CHANGELOG.md).
+
+The repository uses NiroWear's newly authored [Folded Signal identity](docs/branding/PROVENANCE.md). Historical beta.1 retains its original launcher icon; this presentation change does not replace its APK.
