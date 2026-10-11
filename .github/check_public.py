@@ -61,6 +61,8 @@ def main():
     for name, p in disk.items():
         staged = subprocess.check_output(['git', 'show', ':' + name], cwd=ROOT)
         assert staged == p.read_bytes(), 'Unreviewed index bytes: ' + name
+    identities = subprocess.check_output(['git', 'log', '-1', '--format=%ae%n%ce'], cwd=ROOT).decode().splitlines()
+    assert len(identities) == 2 and all(i.endswith('@users.noreply.github.com') for i in identities), 'Public commit must use GitHub no-reply metadata'
     print(f'PASS: {len(ALLOWED)} exact allowlisted files, approved screenshot/legal hashes, no source/APK/private files, relative links and bounded secret scan')
 
 if __name__ == '__main__':

@@ -187,3 +187,5 @@ Keys and requested conversation context go directly to your selected endpoint. I
 Third-party components and materials retain their respective owners' rights and license terms; the first-party notice does not claim ownership of them. [Third-party notices](THIRD_PARTY_NOTICES.md) and required license/data materials accompany the application and this repository.
 
 NiroWear is beta software and may contain defects or incomplete behavior. It is not production-certified or commercially supported. Attribution corrections can use a nonconfidential [GitHub Issue](https://github.com/michaelxdips/NiroWear-Beta/issues/new/choose); sensitive security concerns use [private reporting](https://github.com/michaelxdips/NiroWear-Beta/security/advisories/new). See [Changelog](CHANGELOG.md) for published history and unreleased landing-page changes.
+
+AI responses may be false, incomplete or outdated. Independently check factual claims before relying on or sharing them. API availability does not establish that your account, region or intended use meets provider terms.
