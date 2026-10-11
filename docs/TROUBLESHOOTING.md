@@ -104,6 +104,10 @@ No. NiroWear is an independent client owned by Stephen Michael. Provider names i
 
 The published release is [0.1.0-beta.1](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.1), versionCode `2`, with one APK asset. Use its explicit download link, not a generic stable “latest” URL or automatic source archive.
 
+### Why does the repository sidebar say “Releases — 1 tag”?
+
+The beta has a published GitHub Release marked **Pre-release**, with an APK attached. The sidebar's tag count does not mean the APK is missing. GitHub's latest-release route selects a non-prerelease release and is unavailable here. Use [Download Beta](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.1/NiroWear-0.1.0-beta.1.apk) or the explicit release page. GitHub also lists automatic source archives; those are not the Android application.
+
 ### Is every Wear OS 3+ watch supported?
 
 No compatibility guarantee is made. Wear OS 3+ and Android API 30+ are minimum requirements. The reference evaluation setup is a round 466 × 466 Wear OS 5 / API 34 emulator. Physical-watch compatibility, battery, thermals, accessibility, and full signed-beta reader coverage remain incompletely verified.

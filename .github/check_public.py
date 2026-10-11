@@ -31,6 +31,10 @@ def check_text(name, data):
         assert not re.search(r'(?i)([A-Z]:\\(?:Users|Temp)\\|/Users/|/home/|docs/memory/|artifacts/|AGENTS\.md|-----BEGIN [A-Z ]*PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|AIza[A-Za-z0-9_-]{30,})', text), name
     assert not text.startswith('version https://git-lfs.github.com/spec/v1\n'), 'LFS pointer: ' + name
     if name.endswith('.md'):
+        assert len(re.findall(r'<details(?:\s[^>]*)?>', text)) == len(re.findall(r'</details>', text)), 'Unclosed disclosure: ' + name
+        for disclosure in re.findall(r'<details(?:\s[^>]*)?>(.*?)</details>', text, re.S):
+            summary = re.search(r'<summary>(.*?)</summary>', disclosure, re.S)
+            assert summary and re.sub(r'<[^>]+>', '', summary.group(1)).strip(), 'Missing disclosure summary: ' + name
         assert not re.search(r'(?im)^#{1,6}\s+(?:roadmap|upcoming features|coming soon|planned architecture|future integrations|internal priorities|unreleased)\b', text), 'Unpublished direction: ' + name
         assert not re.search(r'(?i)0\.\d+\.\d+-beta\.\d+-dev|docs/memory|internal backlog|release candidate', text), 'Private development disclosure: ' + name
         for pair in re.findall(r'\]\(([^)]+)\)|src="([^"]+)"', text):
