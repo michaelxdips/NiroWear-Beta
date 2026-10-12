@@ -2,7 +2,7 @@
 
 Third-party components retain their own license terms. These notices do not grant a license to NiroWear source code or imply that source is public. Required license, copyright and data-source materials are also packaged in the APK under `assets/legal/`.
 
-Scope: published `0.1.0-beta.1` (versionCode 2). No application-source license is granted; [first-party ownership](COPYRIGHT.md) is separate. Version families below include transitive runtime components, not compiler/test tools or an assertion that every dependency class survives APK optimization.
+Scope: published `0.1.0-beta.1` (versionCode 2) and `0.1.0-beta.2` (versionCode 3). Both preserve the accompanying runtime legal materials; beta.2 removes a blank Room KTX declaration without adding runtime components. No application-source license is granted; [first-party ownership](COPYRIGHT.md) is separate. Version families below include transitive runtime components, not compiler/test tools or an assertion that every dependency class survives APK optimization.
 
 | Component | Terms and attribution |
 |---|---|

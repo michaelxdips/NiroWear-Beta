@@ -8,9 +8,9 @@
 
 NiroWear brings AI chat to Wear OS: type or dictate a question, read the answer as it arrives, and return to the full conversation later.
 
-**Public beta · 0.1.0-beta.1 · Sideload only**
+**Public beta · 0.1.0-beta.2 · Sideload only**
 
-[**Download Beta · APK**](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.1/NiroWear-0.1.0-beta.1.apk) · [Release notes](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.1) · [Install guide](docs/USER_GUIDE.md#install-the-apk)
+[**Download Beta · APK**](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.2/NiroWear-0.1.0-beta.2.apk) · [Release notes](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.2) · [Install guide](docs/USER_GUIDE.md#install-the-apk)
 
 **Bring your own API key.** Generation needs internet access and may incur provider charges; no API credit is included.
 
@@ -46,7 +46,7 @@ Start with a question, pause to inspect the answer, then come back when you need
 
 Select a screenshot to jump to its feature guide below. The [table view](#read-the-answer-not-a-miniature-desktop) shows how a grid becomes readable records.
 
-All six screenshots on this page are genuine, uncropped **466 × 466 emulator captures**, displayed smaller for browsing. These views illustrate the workflow, not one continuous recorded chat. Each captures one position, not an entire response. They are not mockups or proof of physical-watch compatibility. Provider screens are capture-protected, so no credential-screen image is included.
+All six screenshots on this page are genuine, uncropped **466 × 466 emulator captures**, displayed smaller for browsing. These retained earlier captures illustrate the workflow, not beta.2-specific visual verification or one continuous recorded chat. Each captures one position, not an entire response. They are not mockups or proof of physical-watch compatibility. Provider screens are capture-protected, so no credential-screen image is included.
 
 ## Explore the published beta
 
@@ -148,7 +148,7 @@ Equipment, and One benefit. Use two rows.
 
 **Links:** tap an HTTP(S) link to request an external Android/Wear handler. There is no built-in browser. Reaching the destination depends on watch/phone handlers and permissions; complete external handoff has not been fully verified.
 
-Reader, font, table, and horizontal-pan checks on the published APK are incomplete; screenshots show particular views, not every possible document.
+Controlled signed-APK table/code/math traversal and tail checks passed at font scales 1.0 and 1.3; wide source-math endpoint/return checks passed at both scales. This is scoped emulator coverage, not acceptance of every possible document or physical watch.
 
 [Markdown and symbol example](docs/USER_GUIDE.md#markdown-and-unicode) · [Code example and pan guidance](docs/USER_GUIDE.md#code) · [Table example](docs/USER_GUIDE.md#tables) · [Math source example](docs/USER_GUIDE.md#math) · [Link handoff](docs/USER_GUIDE.md#links)
 
@@ -192,26 +192,26 @@ Conversation text is not separately encrypted. This beta has no user-facing hist
 
 ## Download and install
 
-The current published release is **0.1.0-beta.1**, published **2026-10-10**. Download the APK, not GitHub's automatic source archives: those contain public landing files, not buildable application source.
+The current published release is **0.1.0-beta.2**, published **2026-10-12**. Download the APK, not GitHub's automatic source archives: those contain public landing files, not buildable application source. [Changes since beta.1](CHANGELOG.md#010-beta2--2026-10-12).
 
-GitHub may show only “1 tag” in the repository sidebar for this prerelease. The published beta and APK are available through **Download Beta** above; no stable `/releases/latest` link is required. [Details](docs/TROUBLESHOOTING.md#why-does-the-repository-sidebar-say-releases--1-tag).
+GitHub's sidebar may emphasize tag counts for prereleases. The published beta and APK are available through **Download Beta** above; no stable `/releases/latest` link is required. [Details](docs/TROUBLESHOOTING.md#why-does-the-repository-sidebar-emphasize-tags).
 
 Minimum: **Wear OS 3 or newer with Android API 30 or newer**. The reference evaluation setup is a round **466 × 466 Wear OS 5 / API 34 emulator**. Minimum requirements are not a tested-device list; broad physical-watch support is unverified. No Play Store release is available.
 
 | Published APK identity | Value |
 |---|---|
-| Download | [NiroWear-0.1.0-beta.1.apk](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.1/NiroWear-0.1.0-beta.1.apk) |
+| Download | [NiroWear-0.1.0-beta.2.apk](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.2/NiroWear-0.1.0-beta.2.apk) |
 | Package | `com.nirowear` |
-| Version / versionCode | `0.1.0-beta.1` / `2` |
-| Size | 25,994,739 bytes |
-| SHA256 | `25b091753743c5b439bb1413525ddef9f69a28d81bd7dae9773013e32605fdb7` |
+| Version / versionCode | `0.1.0-beta.2` / `3` |
+| Size | 3,023,513 bytes |
+| SHA256 | `d524c3bae5a26ab5cac7c8c3b80f62824b1ecc82506f180ca005954eeaeaa0b6` |
 | Signing certificate SHA256 | `7d4e6e99821d904f23900bd4e0cad5b64b1a2733a28243dcc8ab9d6e2768abe3` |
 
 **Signing caution:** this nondebuggable APK uses an owner-approved Android Debug certificate as its beta update identity. That is not production-grade signing. See [security guidance](SECURITY.md).
 
 1. Download the APK and verify its SHA256 against the value above.
 2. Pair/connect Android SDK Platform Tools with your intended watch using its supported debugging workflow.
-3. Check `adb devices -l`, then install with `adb -s <serial> install NiroWear-0.1.0-beta.1.apk`.
+3. Check `adb devices -l`, then install with `adb -s <serial> install NiroWear-0.1.0-beta.2.apk`. For an existing beta.1 installation, use `install -r` to preserve local data.
 4. Open NiroWear, tap the top header for **Menu**, and open **Providers / model**.
 5. Add the correct provider type, HTTPS API base, key, and model ID. Choose **Save securely**, return with **Back**, then use the keyboard icon to send a first prompt.
 
@@ -223,7 +223,7 @@ The [user guide](docs/USER_GUIDE.md#install-the-apk) includes checksum, pairing,
 
 This is an evaluation beta, not a production-certified release. What you can use and what has been fully checked are different:
 
-- The published APK has not been fully checked across all reader content, tables, font sizes, restoration cases, and horizontal-pan interactions.
+- Scoped signed-emulator checks cover reader endpoints at font scales 1.0/1.3, navigation, Activity recreation and history reopening after process/device restart. Arbitrary huge documents, all font sizes and all lifecycle/device combinations remain unverified. Cold-start reading-position persistence is not promised.
 - Physical-watch touch, battery, thermals, accessibility, and broad compatibility are not fully verified. Human visual review of the protected provider editor is incomplete.
 - Genuine spoken transcription and complete external-link destinations are not fully verified.
 - Broad live upstream coverage is incomplete. Observed genuine requests used a configured third-party HTTPS Responses endpoint; a displayed model/provider name does not prove official upstream identity.
@@ -262,4 +262,4 @@ Copyright © 2026 Stephen Michael, for first-party NiroWear material. Applicatio
 
 Third-party components, icons, and other materials retain their respective owners' rights and license terms. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), [SECURITY.md](SECURITY.md), and [published release history](CHANGELOG.md).
 
-The repository uses NiroWear's newly authored [Folded Signal identity](docs/branding/PROVENANCE.md). Historical beta.1 retains its original launcher icon; this presentation change does not replace its APK.
+The repository and beta.2 use NiroWear's newly authored [Folded Signal identity](docs/branding/PROVENANCE.md). Historical beta.1 retains its original launcher icon and unchanged APK.

@@ -1,6 +1,6 @@
 # Security
 
-NiroWear is a limited binary beta, not a production-security certification. Published beta.1 uses an owner-approved Android Debug certificate as its beta-only update identity; the APK is nondebuggable. Off-device signing recovery remains unverified. Verify downloads using the hash and certificate in [README.md](README.md).
+NiroWear is a limited binary beta, not a production-security certification. Published beta.1 and beta.2 use the same owner-approved Android Debug certificate as their beta-only update identity; the APKs are nondebuggable. Off-device signing recovery remains unverified. Verify current downloads using the hash and certificate in [README.md](README.md); historical hashes remain in [CHANGELOG.md](CHANGELOG.md).
 
 Experimental beta is provided as-is, without warranties. NiroWear application source is proprietary, not open-source. © 2026 Stephen Michael, for first-party NiroWear material only; third-party rights remain separate. Public landing files grant no blanket reuse license. See [COPYRIGHT.md](COPYRIGHT.md).
 

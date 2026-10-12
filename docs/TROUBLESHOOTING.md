@@ -1,6 +1,6 @@
 # Troubleshooting and FAQ
 
-For published **0.1.0-beta.1** only. Start with the symptom below, preserve valuable data, and report what you observed without secrets.
+For published **0.1.0-beta.2**. Start with the symptom below, preserve valuable data, and report what you observed without secrets. Historical beta.1 identity remains in the changelog.
 
 [User guide](USER_GUIDE.md) · [README](../README.md) · [Feedback forms](https://github.com/michaelxdips/NiroWear-Beta/issues/new/choose)
 
@@ -17,7 +17,7 @@ For published **0.1.0-beta.1** only. Start with the symptom below, preserve valu
 
 | Symptom | Safe steps | Useful report details |
 |---|---|---|
-| APK checksum differs | Do not install. Download again from the [published release](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.1) and calculate SHA256 again. | File name, file size, computed hash, download URL; no personal file paths needed. |
+| APK checksum differs | Do not install. Download again from the [published release](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.2) and calculate SHA256 again. | File name, file size, computed hash, download URL; no personal file paths needed. |
 | Watch does not appear in ADB | Check the watch's debugging screen and connection. Run `adb devices -l`. For supported wireless debugging, distinguish pairing and connection ports. | Watch/OS, Platform Tools version, sanitized error; omit addresses and pairing codes if private. |
 | `INSTALL_FAILED_OLDER_SDK` | Check Android API level. The APK requires API 30+ and Wear OS 3+. Do not try to bypass the requirement. | Watch model, Wear OS and Android versions/API if known. |
 | `INSTALL_FAILED_UPDATE_INCOMPATIBLE` or certificate mismatch | Confirm package and certificate against the published identity. Keep the existing app and data; do not uninstall to bypass the mismatch. | Existing version, APK source, exact error, whether it is a new install or update. |
@@ -27,7 +27,7 @@ For published **0.1.0-beta.1** only. Start with the symptom below, preserve valu
 Published APK SHA256:
 
 ```text
-25b091753743c5b439bb1413525ddef9f69a28d81bd7dae9773013e32605fdb7
+d524c3bae5a26ab5cac7c8c3b80f62824b1ecc82506f180ca005954eeaeaa0b6
 ```
 
 Package: `com.nirowear`; versionCode: `2`. Certificate SHA256:
@@ -81,7 +81,7 @@ No automatic replay occurs after a failed or interrupted stream. Pressing **Retr
 | Code or math extends sideways | Pan horizontally inside the wide block. Scroll vertically outside or through surrounding content. Do not expect the full width to fit at once. | Minimal nonconfidential sample, font size, pan direction and visible result. |
 | Rightward gesture leaves the reader | At a horizontal block's left edge, platform back/dismiss may take over. Reopen the app and use History if needed. | Where the swipe began, whether the block was already at its left edge. |
 | Table no longer looks like a grid | Expected: tables display as vertical records under column labels. Scroll through all row values. | Report missing values with a tiny nonconfidential table sample. |
-| LaTeX commands appear instead of a fraction/matrix | Expected source fallback. Native formula typesetting is unavailable in beta.1. | Report missing or unreadable source, not absence of native typesetting. |
+| LaTeX commands appear instead of a fraction/matrix | Expected source fallback. Native formula typesetting is unavailable in beta.2. | Report missing or unreadable source, not absence of native typesetting. |
 | Symbols appear as boxes | Device font coverage varies. Compare ordinary text and provide a small Unicode example. | Exact characters, OS/font size, optional safe screenshot. |
 | Link does not reach its destination | Check available watch/phone handlers and their permissions. NiroWear only requests an external HTTP(S) handoff; no built-in browser is supplied. | Safe public link, handler/device details, visible outcome. |
 | Controls clip, labels are unclear, or reading order is difficult | Record the font size, screen shape, and exact interaction. Do not reduce accessibility settings just to conceal the issue. | Use the [device/accessibility form](https://github.com/michaelxdips/NiroWear-Beta/issues/new?template=device-feedback.yml). No medical information needed. |
@@ -102,11 +102,11 @@ No. NiroWear is an independent client owned by Stephen Michael. Provider names i
 
 ### Which version can I download?
 
-The published release is [0.1.0-beta.1](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.1), versionCode `2`, with one APK asset. Use its explicit download link, not a generic stable “latest” URL or automatic source archive.
+The current published release is [0.1.0-beta.2](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.2), versionCode `3`, with one APK asset. Historical beta.1 remains available unchanged. Use the explicit download link, not a generic stable “latest” URL or automatic source archive.
 
-### Why does the repository sidebar say “Releases — 1 tag”?
+### Why does the repository sidebar emphasize tags?
 
-The beta has a published GitHub Release marked **Pre-release**, with an APK attached. The sidebar's tag count does not mean the APK is missing. GitHub's latest-release route selects a non-prerelease release and is unavailable here. Use [Download Beta](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.1/NiroWear-0.1.0-beta.1.apk) or the explicit release page. GitHub also lists automatic source archives; those are not the Android application.
+The betas have published GitHub Releases marked **Pre-release**, with an APK attached to each. The sidebar's tag count does not mean the APK is missing. GitHub's latest-release route selects a non-prerelease release and is unavailable here. Use [Download Beta](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.2/NiroWear-0.1.0-beta.2.apk) or the explicit release page. GitHub also lists automatic source archives; those are not the Android application.
 
 ### Is every Wear OS 3+ watch supported?
 
