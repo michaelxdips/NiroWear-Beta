@@ -146,11 +146,15 @@ Secure-window protection helps keep credentials out of captures. Do not disable 
 
 ### Are math, voice, and links complete?
 
-No. Math uses Unicode/LaTeX source fallback, not native typesetting. Voice delegates to a system recognizer and real spoken transcription is not fully verified. HTTP(S) links request external handlers, but destination completion is not fully verified.
+Math is typeset natively since beta.6. Voice still delegates to a system recognizer and real spoken transcription is not fully verified. HTTP(S) links request external handlers, but destination completion is not fully verified.
 
 ### Can I build the app from this repository?
 
-No. Application source is private, proprietary, and not open-source. Public docs/tooling PRs are welcome; private source collaboration is individually owner-reviewed through the [collaboration form](https://github.com/michaelxdips/NiroWear-Beta/issues/new?template=developer-collaboration.yml). An issue does not automatically grant access or a license.
+Not from here. Application source is MIT licensed and public at
+[github.com/michaelxdips/NiroWear](https://github.com/michaelxdips/NiroWear); that repository has the
+build steps, architecture notes and contribution rules. This repository distributes signed APKs and
+user documentation. Documentation fixes here are welcome through the
+[documentation PR path](../CONTRIBUTING.md#public-pull-requests).
 
 ### Are AI answers reliable?
 

@@ -2,6 +2,33 @@
 
 Published binary history and completed public documentation changes.
 
+## 0.1.0-beta.6 - 2026-10-22
+
+[Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.6) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.6/NiroWear-0.1.0-beta.6.apk)
+
+- **LaTeX is typeset in release builds.** Earlier betas showed formula source as monospace text.
+- Renderer hardening: two uncaught stack overflows reachable from a few hundred bytes of model
+  output were fixed, and the math admission guard now refuses macro definitions it previously let
+  through.
+- Gemini: a rejected key now reports as a rejected key instead of a generic bad request.
+
+Package `com.nirowear`, versionCode `7`, nondebuggable; same beta-only signing identity.
+
+APK SHA256: `bd9c7eb968dc3b10c873591a79c81987c147980c480620af464dc2c65154fcb9`.
+
+## 0.1.0-beta.5 - 2026-10-22
+
+[Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.5) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.5/NiroWear-0.1.0-beta.5.apk)
+
+- **Setup no longer needs the watch keyboard.** A one-time LAN page lets you paste the key from a
+  phone or laptop; the payload is encrypted end-to-end and the session is single-use.
+- Validation errors name the real cause instead of blaming three fields at once.
+- Non-printable characters are stripped at the input boundary.
+
+Package `com.nirowear`, versionCode `6`, nondebuggable; same beta-only signing identity.
+
+APK SHA256: `c0ff1240bc525ad8f9d3aa38a63f0fb1eb852b490658b81a3c1a3a4c3dba9f63`.
+
 ## 0.1.0-beta.2 — 2026-10-12
 
 [Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.2) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.2/NiroWear-0.1.0-beta.2.apk)

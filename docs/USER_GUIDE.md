@@ -190,14 +190,16 @@ Equipment, and One benefit. Use two rows.
 
 ### Math
 
-The published beta displays Unicode math and LaTeX **source fallback**, not native formula typography. Fractions, roots, powers/subscripts, calculus, matrices, cases, and aligned equations remain source text. Wide formula source supports horizontal pan.
+Formulas are **typeset**, not shown as source. Fractions, roots, powers, subscripts, integrals,
+summations, limits, matrices, cases and aligned equations render as formulas in release builds.
 
 ```text
-Explain the quadratic formula. Show its LaTeX source and define each symbol.
-Then show a 2 by 2 identity matrix in LaTeX source.
+Explain the quadratic formula, then show a 2 by 2 identity matrix.
 ```
 
-Seeing `\frac{...}{...}` or `\begin{matrix}...\end{matrix}` is expected in this beta, not proof of typeset fraction or matrix support.
+A wide formula pans horizontally rather than shrinking into illegibility. Input the renderer
+deliberately refuses — file-inclusion macros, macro definitions, unbalanced braces — falls back to
+readable source text, so a formula is never silently dropped.
 
 ### Links
 
