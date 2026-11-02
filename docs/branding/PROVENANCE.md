@@ -6,7 +6,7 @@ audited concepts.
 ## Design record
 
 Three bounded directions were built and audited before selection; the full record, renders, audit
-score and nine-slide board live in the source repo under `artifacts/beta4-2026-10-21/logo/`
+score and nine-slide board live in the source repo beta.4 logo history
 ([NiroWear source](https://github.com/michaelxdips/NiroWear)).
 
 | concept | type | strokes | `svg_audit.py` | outcome |
@@ -92,5 +92,5 @@ not reclassified as first-party.
 
 First-party project material, MIT-licensed source; (c) 2026 Stephen Michael, attribution limited to applicable
 first-party rights, not blanket third-party or generated exclusivity. The Folded Signal mark remains
-in git-less historical artifacts (`artifacts/beta2-2026-10-11/`, `icon-preview-2026-10-08/`) and in
+in git-less historical beta.2 and icon-preview material and in
 the published beta.1/beta.2 APKs, which are immutable.

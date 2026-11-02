@@ -15,16 +15,25 @@ LEGAL = {'ANDROIDX-NATIVE-NOTICES.txt', 'APACHE-HARMONY-NOTICE.txt', 'APACHE-HTT
          'LICENSE-809fa1ed2145.txt', 'MATERIAL_ICONS_LICENSE.txt', 'MATERIAL_ICONS_NOTICE.txt', 'MPL-2.0.txt',
          'PROTOBUF-UPSTREAM-SUPPLEMENTAL.txt', 'PUBLIC_SUFFIX_LIST-NOTICE.txt', 'PUBLIC_SUFFIX_LIST.dat',
          'SERIALIZATION-LICENSE.txt', 'SERIALIZATION-NOTICE.txt'}
+BRAND_TEXT = {'docs/branding/nirowear-mark.svg', 'docs/branding/nirowear-mark-24.svg',
+              'docs/branding/nirowear-mark-reversed.svg', 'docs/branding/nirowear-mark-mono.svg',
+              'docs/branding/PROVENANCE.md', 'index.html'}
 ALLOWED = {'README.md', 'PRIVACY.md', 'THIRD_PARTY_NOTICES.md', '.gitignore', 'CHANGELOG.md', 'SECURITY.md', 'COPYRIGHT.md', 'CONTRIBUTING.md',
            'docs/USER_GUIDE.md', 'docs/TROUBLESHOOTING.md',
            '.github/ISSUE_TEMPLATE/developer-collaboration.yml', '.github/ISSUE_TEMPLATE/device-feedback.yml', '.github/ISSUE_TEMPLATE/config.yml',
            '.github/ISSUE_TEMPLATE/bug-report.yml', '.github/ISSUE_TEMPLATE/feature-request.yml',
            '.github/check_public.py', '.github/public-assets.json', '.github/workflows/public-hygiene.yml'}
 ALLOWED |= {'docs/screenshots/' + n for n in SCREENS} | {'docs/licenses/' + n for n in LEGAL}
-BRAND = {'docs/branding/nirowear-icon.png', 'docs/branding/nirowear-mark.svg',
-         'docs/branding/nirowear-mark-24.svg', 'docs/branding/nirowear-mark-reversed.svg',
-         'docs/branding/nirowear-mark-mono.svg'}
+BRAND = {'docs/branding/nirowear-icon.png'} | {'docs/branding/nirowear-mark.svg', 'docs/branding/nirowear-mark-24.svg',
+         'docs/branding/nirowear-mark-reversed.svg', 'docs/branding/nirowear-mark-mono.svg'}
 ALLOWED |= BRAND | {'docs/branding/PROVENANCE.md', 'index.html'}
+
+
+def canon(name, data):
+    if name in BRAND_TEXT or name.endswith(('.md', '.yml', '.json', '.py', '.txt', '.dat', '.html')):
+        return data.replace(b'\r\n', b'\n').replace(b'\r', b'\n')
+    return data
+
 
 def check_text(name, data):
     text = data.decode('utf-8')
@@ -60,12 +69,13 @@ def check_text(name, data):
         for tag in re.findall(r'<img\b[^>]*>', text):
             assert re.search(r'alt="[^"\s][^"]*"', tag), 'Missing image alt text: ' + name
 
+
 def main():
     disk = {p.relative_to(ROOT).as_posix(): p for p in ROOT.rglob('*')
             if p.is_file() and '.git' not in p.relative_to(ROOT).parts}
     assert set(disk) == ALLOWED, {'unexpected': sorted(set(disk) - ALLOWED), 'missing': sorted(ALLOWED - set(disk))}
-    immutable = json.loads((ROOT / '.github/public-assets.json').read_text())
-    assert set(immutable) == {'docs/screenshots/' + n for n in SCREENS} | {'docs/licenses/' + n for n in LEGAL} | {'docs/branding/nirowear-icon.png', 'docs/branding/nirowear-mark.svg'}
+    immutable = json.loads((ROOT / '.github/public-assets.json').read_bytes().decode('utf-8-sig'))
+    assert set(immutable) == {'docs/screenshots/' + n for n in SCREENS} | {'docs/licenses/' + n for n in LEGAL} | BRAND
     copyright_text = (ROOT / 'COPYRIGHT.md').read_text(encoding='utf-8')
     assert 'Copyright © 2026 Stephen Michael' in copyright_text and 'proprietary' in copyright_text
     assert 'COPYRIGHT.md' in (ROOT / 'README.md').read_text(encoding='utf-8')
@@ -74,7 +84,7 @@ def main():
         assert not re.search(r'NiroWear\s*(?:®|™)|NiroWear.{0,30}registered trademark|legally certified|GDPR compliant|CCPA compliant|HIPAA compliant', text, re.I), name
     for name, p in disk.items():
         assert not p.is_symlink() and p.stat().st_size < 2_000_000, name
-        data = p.read_bytes()
+        data = canon(name, p.read_bytes())
         if name in immutable:
             assert hashlib.sha256(data).hexdigest() == immutable[name], 'Approved asset changed: ' + name
         if name.endswith('.png'):
@@ -87,8 +97,8 @@ def main():
     modes = subprocess.check_output(['git', 'ls-files', '--stage'], cwd=ROOT).decode()
     assert not re.search(r'^(160000|120000) ', modes, re.M), 'Submodule or symlink forbidden'
     for name, p in disk.items():
-        staged = subprocess.check_output(['git', 'show', ':' + name], cwd=ROOT)
-        assert staged == p.read_bytes(), 'Unreviewed index bytes: ' + name
+        staged = canon(name, subprocess.check_output(['git', 'show', ':' + name], cwd=ROOT))
+        assert staged == canon(name, p.read_bytes()), 'Unreviewed index bytes: ' + name
     identities = subprocess.check_output(['git', 'log', '-1', '--format=%ae%n%ce'], cwd=ROOT).decode().splitlines()
     assert len(identities) == 2 and all(i.endswith('@users.noreply.github.com') for i in identities), 'Public commit must use GitHub no-reply metadata'
     print(f'PASS: {len(ALLOWED)} exact allowlisted files, approved screenshot/legal hashes, no source/APK/private files, relative links and bounded secret scan')
