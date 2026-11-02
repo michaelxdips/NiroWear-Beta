@@ -2,6 +2,25 @@
 
 Published binary history and completed public documentation changes.
 
+## 0.1.0-beta.8 - 2026-11-02
+
+[Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.8) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.8/NiroWear-0.1.0-beta.8.apk)
+
+- **Three reported UI fixes on beta.7.** Failure text renders once (the transient copy
+  is suppressed when the persisted assistant row already holds the same string; cleared
+  history keeps the transient copy as the only row). Discovery model list auto-closes
+  on select — no long scroll to Save. Stop button stays centered during streaming
+  (48dp balance weight when the Latest action is hidden).
+- No provider, renderer, storage, or signing changes.
+
+Package `com.nirowear`, versionCode `9`, nondebuggable; same beta-only signing identity
+(cert SHA-256 `7D:4E:6E:99:82:1D:90:4F:23:90:0B:D4:E0:CA:D5:B6:4B:1A:27:33:A2:82:43:DC:C8:AB:9D:6E:27:68:AB:E3`).
+
+APK SHA256: `6C5C131BD58AA9A75CCBCD3E6B22085E9F2F83B4ECA14E9A9C57A44865633276`, 3609553 bytes.
+
+JVM 176/176 (38 suites, 0 failures/errors/skips), release assemble clean, connected install
+verified on emulator (`versionCode=9 versionName=0.1.0-beta.8`).
+
 ## 0.1.0-beta.7 - 2026-11-02
 
 [Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.7) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.7/NiroWear-0.1.0-beta.7.apk)
