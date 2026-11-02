@@ -21,8 +21,10 @@ ALLOWED = {'README.md', 'PRIVACY.md', 'THIRD_PARTY_NOTICES.md', '.gitignore', 'C
            '.github/ISSUE_TEMPLATE/bug-report.yml', '.github/ISSUE_TEMPLATE/feature-request.yml',
            '.github/check_public.py', '.github/public-assets.json', '.github/workflows/public-hygiene.yml'}
 ALLOWED |= {'docs/screenshots/' + n for n in SCREENS} | {'docs/licenses/' + n for n in LEGAL}
-BRAND = {'docs/branding/nirowear-icon.png', 'docs/branding/nirowear-mark.svg'}
-ALLOWED |= BRAND | {'docs/branding/PROVENANCE.md'}
+BRAND = {'docs/branding/nirowear-icon.png', 'docs/branding/nirowear-mark.svg',
+         'docs/branding/nirowear-mark-24.svg', 'docs/branding/nirowear-mark-reversed.svg',
+         'docs/branding/nirowear-mark-mono.svg'}
+ALLOWED |= BRAND | {'docs/branding/PROVENANCE.md', 'index.html'}
 
 def check_text(name, data):
     text = data.decode('utf-8')
@@ -63,7 +65,7 @@ def main():
             if p.is_file() and '.git' not in p.relative_to(ROOT).parts}
     assert set(disk) == ALLOWED, {'unexpected': sorted(set(disk) - ALLOWED), 'missing': sorted(ALLOWED - set(disk))}
     immutable = json.loads((ROOT / '.github/public-assets.json').read_text())
-    assert set(immutable) == {'docs/screenshots/' + n for n in SCREENS} | {'docs/licenses/' + n for n in LEGAL} | BRAND
+    assert set(immutable) == {'docs/screenshots/' + n for n in SCREENS} | {'docs/licenses/' + n for n in LEGAL} | {'docs/branding/nirowear-icon.png', 'docs/branding/nirowear-mark.svg'}
     copyright_text = (ROOT / 'COPYRIGHT.md').read_text(encoding='utf-8')
     assert 'Copyright © 2026 Stephen Michael' in copyright_text and 'proprietary' in copyright_text
     assert 'COPYRIGHT.md' in (ROOT / 'README.md').read_text(encoding='utf-8')

@@ -1,9 +1,96 @@
-# NiroWear Folded Signal identity
+# NiroWear — Thread
 
-Created on October 11, 2026 for NiroWear under Stephen Michael's authorization. Two separated page-like facets, a top chevron, and a small continuation tip reflect reading and conversation. Flat mint and lavender shapes remain recognizable without text at small sizes.
+Replaces the 2026-10-11 "Folded Signal" mark as of beta.4. Owner-selected 2026-10-21 from three
+audited concepts.
 
-Design used AI-assisted geometric construction in OpenCode with GPT-6.1 Sol, authored SVG/vector paths, and deterministic Python/Pillow export. No external logo, font, illustration, or supplied image was copied. This records the creation method, not independent trademark clearance or a claim of exclusive human authorship over generated material.
+## Design record
 
-The [SVG master](nirowear-mark.svg) and [512-pixel PNG](nirowear-icon.png) are first-party project branding, not an open-source asset pack or blanket reuse grant. Copyright © 2026 Stephen Michael applies to applicable first-party rights; third-party and generated-material rights remain distinct. See [COPYRIGHT.md](../../COPYRIGHT.md).
+Three bounded directions were built and audited before selection; the full record, renders, audit
+score and nine-slide board live in the source repo under `artifacts/beta4-2026-10-21/logo/`
+([NiroWear source](https://github.com/michaelxdips/NiroWear)).
 
-Historical beta.1 retains its original launcher icon and release artifact. Current repository branding does not alter that published binary.
+| concept | type | strokes | `svg_audit.py` | outcome |
+| --- | --- | --- | --- | --- |
+| A — Thread | abstract | 1 × 32, square caps | 98/100 | **selected** |
+| B — N-stem | letterform | 3 × 32, square caps | 98/100 | retained, unused |
+| C — Fold | abstract | 2 × 28, round caps | 96/100 | retained, unused |
+
+Brief (`logo/BRIEF.md`) fixed the constraints before drawing: reader-first, linear, quiet, precise;
+dark ground; round face; must survive 48 px and a 24 px monochrome mask. It also listed the banned
+category clichés — robot/android head, generic chat bubble, sparkle or four-point star, neon gradient
+orb, stock geometric "N", waveform bars — so the selection could be judged against them rather than
+against taste alone. `search_library.py --industry ai-ml` was consulted first (12 comparable marks:
+33% abstract, 33% blue, 25% negative-space) specifically to see what the category already looks like.
+
+## What the mark is
+
+One page edge that never closes. A single monoline starts at the bottom left, runs up the left page
+margin, across the top, down the right margin, and **stops** partway down the right side — the answer
+is still arriving. No typography, no gradient, no raster, no filter.
+
+It is deliberately a document, not a messenger: there is no bubble, no tail, no avatar geometry.
+
+## Geometry and provenance
+
+Authored once at 256×256 (`M58 202 V54 H198 V152`, stroke 32, square caps, miter joins), then scaled
+by **0.260937** about the 108-space centre to 54,54 — the factor implied by the 8.35 stroke
+(8.35 / 32). The previous text said ×0.7679, which is arithmetically impossible: 32 × 0.7679 is
+24.573, not 8.35, and it does not reproduce any point of the path. The 0.260937 factor reproduces
+all four authored points to two decimals, which is how the error was found.
+
+Refined 2026-10-22 (owner-selected scope: fix measured defects, do not redesign):
+
+- **Strokes expanded to a filled outline.** The master is now pure fill, so it scales and cuts
+  predictably. `scripts/verify-outline.py` rasterises the old stroke and the new outline at 432 px
+  and compares them: **0 pixels differ by more than 6% coverage, worst delta 0.000**.
+- **Coordinates at ≤2 decimals**, clearing the audit's precision INFO.
+- **Safe-circle margin doubled.** The ink was rescaled so the furthest corner sits at r=32.00
+  instead of 32.50, doubling the margin to the 66/108 safe circle from 0.50 to 1.00 in 108-space.
+  That is still only 0.22 px at 24 px, which is the point: the previous margin was 0.11 px.
+- `svg_audit.py` now reports **100/100, no issues** (was 98/100 with two INFO findings).
+
+| Asset | Path | Notes |
+| --- | --- | --- |
+| Master | `docs/branding/nirowear-mark.svg` | filled outline, plate + mint glyph |
+| Reversed | `docs/branding/nirowear-mark-reversed.svg` | ink glyph on paper plate |
+| Monochrome | `docs/branding/nirowear-mark-mono.svg` | one colour, transparent ground |
+| 24 px companion | `docs/branding/nirowear-mark-24.svg` | outline grown 0.39/side so the stroke lands on 2 whole pixels |
+| Adaptive foreground | `app/src/main/res/drawable/ic_brand_foreground.xml` (source repo) | `#9BE8D5`, same outline as master |
+| Monochrome (API 33+) | `app/src/main/res/drawable/ic_brand_monochrome.xml` (source repo) | `#FFFFFF`, same grown outline as the 24 px companion |
+| Ground | `app/src/main/res/values/brand.xml` (source repo) | `#11171E`, unchanged from Folded Signal |
+| 512 px store icon | `docs/branding/nirowear-icon.png` | regenerated by `scripts/export-brand.py` (stdlib only) |
+
+Current measurement: foreground r=32.00, monochrome r≈32.4 (the grown outline), both inside r≤33.
+
+## Known colour limitation, measured
+
+The two brand colours do not both work on both site backgrounds:
+
+| Pair | Ratio | Verdict |
+| --- | --- | --- |
+| mint `#9BE8D5` on its own plate `#11171E` | 12.79 | pass |
+| mint on site paper `#ECEDE9` | **1.20** | fail |
+| plate `#11171E` on site paper | 15.33 | pass |
+| plate on site dark paper `#0E1012` | **1.06** | fail |
+| mint on site dark paper | 13.52 | pass |
+
+The mark is therefore a **two-colour lockup**: it works on its own plate, and the reversed and
+monochrome variants above cover the cases where the accent is unavailable. It is not used as a
+bare mint glyph on paper, and `svg_audit.py --bg` reports 90/100 with a low-contrast WARN for both
+backgrounds — that WARN is accurate and is recorded rather than suppressed.
+
+AI-assisted/procedural geometry. This is not a claim of independently proven exclusive human
+copyright, and no trademark clearance or registration is asserted. No external logo, font,
+illustration, input image, or third-party design was copied or supplied; the visual-library searches
+were used to avoid category conventions, not to reproduce them.
+
+## Held-over components
+
+Google Material keyboard and microphone icons remain separate Apache-2.0 components under
+`app/src/main/res/drawable/ic_keyboard.xml` and `ic_mic.xml` in the source repo,
+not reclassified as first-party.
+
+First-party project material, MIT-licensed source; (c) 2026 Stephen Michael, attribution limited to applicable
+first-party rights, not blanket third-party or generated exclusivity. The Folded Signal mark remains
+in git-less historical artifacts (`artifacts/beta2-2026-10-11/`, `icon-preview-2026-10-08/`) and in
+the published beta.1/beta.2 APKs, which are immutable.

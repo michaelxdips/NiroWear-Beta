@@ -1,6 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">
-  <title>NiroWear — Folded Signal</title>
+  <title>NiroWear — Thread</title>
   <rect width="108" height="108" rx="24" fill="#11171E"/>
-  <path d="M30 34 L49 43 L49 74 L30 65 Z M59 43 L78 34 L78 65 L59 74 Z" fill="#9BE8D5"/>
-  <path d="M35 27 L54 36 L73 27 L73 35 L54 44 L35 35 Z M49 74 L59 74 L54 82 Z" fill="#C3B6FF"/>
+  <!-- One page edge that never closes: the right stem stops partway down because the answer is
+       still arriving. Authored at 256 as M58 202 V54 H198 V152 with a 32-wide stroke, then scaled
+       to 108-space and expanded to this filled outline. Furthest ink corner r=32, inside the
+       66/108 adaptive-icon safe circle (r<=33). No strokes: the master is pure fill. -->
+  <path d="M31.89 30.87 H76.11 V64.28 H67.89 V39.09 H40.11 V77.13 H31.89 Z" fill="#9BE8D5"/>
 </svg>

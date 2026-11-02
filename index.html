@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NiroWear Beta — Ask on your watch. Read beyond one screen.</title>
+<meta name="description" content="Install the NiroWear beta on your Wear OS watch, add your own API key, and read full AI answers on a 466-pixel round display.">
+<link rel="icon" href="docs/branding/nirowear-mark.svg" type="image/svg+xml">
+<style>
+  /* Thread lockup: paper + ink, mint reserved for the mark on its own plate. */
+  :root{
+    --paper:#ECEDE9; --ink:#101315; --steel:#5A6167; --hair:#C9CCC5; --hair-soft:#DBDED7;
+    --plate:#11171E; --mint:#9BE8D5; --code-bg:#DFE2DB;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    background:var(--paper);color:var(--ink);line-height:1.62;font-size:17px;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:0 28px}
+  a{color:inherit;text-underline-offset:3px}
+  :where(a,button,summary):focus-visible{outline:2px solid #1D39C4;outline-offset:3px}
+  /* Hero: the mark on its plate, then the thesis line. */
+  header.hero{background:var(--plate);color:#E9EBE7;text-align:center;padding:72px 24px 60px}
+  header.hero .mark{width:88px;height:88px}
+  header.hero h1{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+    font-size:clamp(1.7rem,5vw,2.5rem);letter-spacing:-.04em;margin:22px 0 12px}
+  header.hero p.sub{color:#9AA1A6;max-width:620px;margin:0 auto 28px;font-size:17px}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 28px;border-radius:999px;text-decoration:none;
+    font-weight:700;font-size:1rem;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .btn.primary{background:var(--mint);color:#11171E}
+  .btn.ghost{border:2px solid var(--mint);color:var(--mint)}
+  .meta-eyebrow{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;
+    letter-spacing:.16em;text-transform:uppercase;color:#9AA1A6;margin-bottom:14px}
+  main{padding:40px 0 64px}
+  section.card{background:#fff;border:1px solid var(--hair);border-radius:16px;
+    padding:28px;margin:20px 0}
+  h2{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.3rem;
+    letter-spacing:-.03em;margin:0 0 14px}
+  .steps{counter-reset:step;list-style:none;padding:0;margin:0}
+  .steps li{counter-increment:step;position:relative;padding:10px 0 10px 52px;margin:8px 0}
+  .steps li::before{content:counter(step);position:absolute;left:0;top:8px;width:36px;height:36px;
+    border-radius:50%;background:#11171E;color:var(--mint);font-weight:800;
+    display:flex;align-items:center;justify-content:center;font-size:1rem;
+    font-family:ui-monospace,Menlo,Consolas,monospace}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--code-bg);
+    padding:1px 5px;border-radius:5px;font-size:.86em;overflow-wrap:anywhere}
+  pre{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--plate);color:#dce8e2;
+    padding:14px;border-radius:10px;overflow-x:auto;font-size:.85rem;line-height:1.5}
+  table{width:100%;border-collapse:collapse;font-size:.93rem;margin-top:8px}
+  th,td{border:1px solid var(--hair);padding:9px 11px;text-align:left;vertical-align:top}
+  th{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--steel)}
+  /* Signature: the watch dial. One round frame, six real captures, dot navigation. */
+  .dial{width:min(466px,100%);aspect-ratio:1;margin:8px auto 4px;border-radius:50%;
+    background:#05070A;border:10px solid #24272b;overflow:hidden;position:relative}
+  .dial img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
+  .dial img.on{opacity:1}
+  .dial-cap{text-align:center;color:var(--steel);font-size:.9rem;min-height:1.6em;margin:10px 0 4px}
+  .dots{display:flex;gap:10px;justify-content:center;margin:6px 0 2px}
+  .dots button{width:34px;height:34px;border-radius:50%;border:1px solid var(--hair);
+    background:transparent;cursor:pointer;font-size:0;padding:0}
+  .dots button::after{content:"";display:block;width:10px;height:10px;border-radius:50%;
+    background:var(--steel);margin:auto}
+  .dots button[aria-selected="true"]{border-color:var(--ink)}
+  .dots button[aria-selected="true"]::after{background:var(--ink)}
+  .stills{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px}
+  .stills figure{margin:0;text-align:center}
+  .stills img{width:100%;border-radius:50%;border:4px solid var(--plate);max-width:190px}
+  .stills figcaption{font-size:.8rem;color:var(--steel);margin-top:6px;
+    font-family:ui-monospace,Menlo,Consolas,monospace}
+  details{border:1px solid var(--hair);border-radius:10px;padding:10px 14px;margin:8px 0;background:#fbfaf6}
+  summary{font-weight:700;cursor:pointer;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .warn{background:#fff7e8;border:1px solid #e8cf9a;border-radius:10px;padding:12px 16px;margin:12px 0}
+  footer{border-top:1px solid var(--ink);margin-top:28px;padding:32px 0 56px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;line-height:1.8;color:var(--steel)}
+  @media (max-width:560px){
+    .wrap{padding:0 18px} section.card{padding:20px} body{font-size:16px}
+    .dial{border-width:7px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="meta-eyebrow">Wear OS &middot; BYOK &middot; Public beta 0.1.0-beta.6</div>
+  <img class="mark" src="docs/branding/nirowear-icon.png" width="88" height="88" alt="NiroWear Thread mark: one page edge left open">
+  <h1>Ask on your watch.<br>Read beyond one screen.</h1>
+  <p class="sub">NiroWear is a bring-your-own-key AI chat client for Wear OS. Your provider, your key,
+  your wrist — answers arrive as readable documents on a 466-pixel round display.</p>
+  <div class="cta-row">
+    <a class="btn primary" href="https://github.com/michaelxdips/NiroWear-Beta/releases/latest">Download Beta</a>
+    <a class="btn ghost" href="docs/USER_GUIDE.md">User Guide</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card">
+    <h2>Install in 5 steps</h2>
+    <ol class="steps">
+      <li><strong>Download the APK</strong> from the
+        <a href="https://github.com/michaelxdips/NiroWear-Beta/releases/latest">latest beta release</a>.
+        Use the <code>.apk</code> asset — never the “Source code” ZIP.</li>
+      <li><strong>Verify SHA256</strong> against the hash published on the release page:
+        <pre>Get-FileHash -Algorithm SHA256 .\NiroWear-*.apk</pre>
+        If it differs, do not install — download again.</li>
+      <li><strong>Connect your watch</strong> with <code>adb</code> (wireless debugging or USB),
+        then install to that watch only:
+        <pre>adb -s &lt;serial&gt; install NiroWear-*.apk</pre></li>
+      <li><strong>Open NiroWear</strong> from the watch launcher, then disable debugging.</li>
+      <li><strong>Add a provider</strong> (below) and send your first message.</li>
+    </ol>
+    <div class="warn"><strong>Watch only, Wear OS 3+ (API 30+).</strong> Reference setup: round 466 × 466, Wear OS 5.
+    Your watch needs internet. There is no Play Store build. Sideload only.</div>
+  </section>
+
+  <section class="card">
+    <h2>Add your API key — 3 ways</h2>
+    <table>
+      <tr><th>Way</th><th>How</th><th>Best for</th></tr>
+      <tr><td>Type it</td><td>Menu → Providers / model → Add provider → fill Name, Base URL, Manual model ID, API key → Save securely</td><td>Short keys, one provider</td></tr>
+      <tr><td>Paste it</td><td>Same screen — paste the key into the key field from clipboard</td><td>Long keys you already hold</td></tr>
+      <tr><td>LAN pair it</td><td>Watch serves a one-time page on your Wi-Fi; paste the key on your phone or laptop; payload is ECDH + AES-GCM encrypted, single-use, 120 s expiry</td><td>Long keys, no typing on the watch</td></tr>
+    </table>
+    <p>Provider types: <strong>Add OpenAI</strong> (Responses), <strong>Add Anthropic</strong> (Messages),
+    <strong>Add Gemini</strong> (GenerateContent), <strong>Add compatible</strong> (any OpenAI-compatible Chat Completions endpoint).
+    Pick by protocol from your endpoint docs — a familiar model name does not select the protocol.
+    A manual model ID works even when discovery fails. <strong>Validate · uses API</strong> sends a real
+    (possibly billable) test generation before you save.</p>
+  </section>
+
+  <section class="card">
+    <h2>First chat</h2>
+    <ol class="steps">
+      <li>Tap the <strong>keyboard icon</strong> → tap <strong>Prompt</strong> → type, e.g.
+        <code>Explain why the sky is blue in three sentences.</code> → <strong>Send</strong>.</li>
+      <li>Read as it streams. Near the bottom the view follows; scroll up to read freely —
+        tap <strong>Jump to latest</strong> to return to the tail.</li>
+      <li><strong>Stop</strong> cancels the request but keeps partial text.
+        <strong>Retry</strong> replaces the last answer; long-press a message to edit &amp; resend
+        (later messages are deleted — no undo).</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>One dial, six moments</h2>
+    <p style="color:var(--steel)">Genuine 466 × 466 emulator captures from a real HTTPS answer —
+    each a scroll position, not a whole answer. Switch moments below; the stills underneath are the same files.</p>
+    <div class="dial" role="tablist" aria-label="Watch screen moments">
+      <img src="docs/screenshots/chat-home.png" alt="Chat home before asking, with keyboard and voice entry controls" class="on">
+      <img src="docs/screenshots/streaming-stop.png" alt="An answer arriving incrementally with Stop visible" loading="lazy">
+      <img src="docs/screenshots/real-response.png" alt="A real AI answer shown as readable document text on a round screen" loading="lazy">
+      <img src="docs/screenshots/code-reader.png" alt="Kotlin code in a monospace block that supports horizontal pan" loading="lazy">
+      <img src="docs/screenshots/table-record.png" alt="Markdown table rendered as labelled vertical records" loading="lazy">
+      <img src="docs/screenshots/history.png" alt="History list for returning to saved conversations" loading="lazy">
+    </div>
+    <p class="dial-cap" aria-live="polite">1 · Before — ask with keyboard or voice</p>
+    <div class="dots" role="tablist" aria-label="Choose a moment">
+      <button role="tab" aria-selected="true" aria-label="Chat home">1</button>
+      <button role="tab" aria-selected="false" aria-label="Streaming with Stop">2</button>
+      <button role="tab" aria-selected="false" aria-label="Formatted answer">3</button>
+      <button role="tab" aria-selected="false" aria-label="Code reader">4</button>
+      <button role="tab" aria-selected="false" aria-label="Tables as records">5</button>
+      <button role="tab" aria-selected="false" aria-label="History">6</button>
+    </div>
+    <div class="stills">
+      <figure><img src="docs/screenshots/chat-home.png" alt="Chat home before asking, with keyboard and voice entry controls" loading="lazy"><figcaption>Before — ask</figcaption></figure>
+      <figure><img src="docs/screenshots/streaming-stop.png" alt="An answer arriving incrementally with Stop visible" loading="lazy"><figcaption>During — read</figcaption></figure>
+      <figure><img src="docs/screenshots/real-response.png" alt="A real AI answer shown as readable document text on a round screen" loading="lazy"><figcaption>Answer — document</figcaption></figure>
+      <figure><img src="docs/screenshots/code-reader.png" alt="Kotlin code in a monospace block that supports horizontal pan" loading="lazy"><figcaption>Pause — pan code</figcaption></figure>
+      <figure><img src="docs/screenshots/table-record.png" alt="Markdown table rendered as labelled vertical records" loading="lazy"><figcaption>Tables — records</figcaption></figure>
+      <figure><img src="docs/screenshots/history.png" alt="History list for returning to saved conversations" loading="lazy"><figcaption>After — return</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>FAQ</h2>
+    <details><summary>Does chat cost money?</summary>
+      <p>The beta APK is free. It includes no API credit — your endpoint bills generation,
+      validation, retry and edit/resend under its own pricing.</p></details>
+    <details><summary>Do I need a phone or account?</summary>
+      <p>No account, no companion app, no NiroWear cloud. The watch needs internet for API calls;
+      saved history reads offline.</p></details>
+    <details><summary>Stop — does it stop billing?</summary>
+      <p>No. Stop cancels the client request and keeps partial text; the provider may already
+      have done billable work.</p></details>
+    <details><summary>Tables look different?</summary>
+      <p>By design: rows render as vertical records under column labels — scroll through them,
+      don’t look for a spreadsheet.</p></details>
+    <details><summary>Something broke?</summary>
+      <p>See <a href="docs/TROUBLESHOOTING.md">Troubleshooting</a>. Never clear data or uninstall
+      as a first step — history and keys can be lost permanently. Report via
+      <a href="https://github.com/michaelxdips/NiroWear-Beta/issues/new/choose">feedback forms</a>
+      without secrets.</p></details>
+  </section>
+
+  <section class="card" style="text-align:center">
+    <h2>Get the beta</h2>
+    <p style="color:var(--steel)">Requires Wear OS 3+ (API 30+), a computer with <code>adb</code>, and your own API key.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="https://github.com/michaelxdips/NiroWear-Beta/releases/latest">Download Beta</a>
+      <a class="btn ghost" href="docs/TROUBLESHOOTING.md" style="border-color:#11171E;color:#11171E">Troubleshooting</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    NiroWear is an independent client by Stephen Michael — not affiliated with OpenAI, Google, or Anthropic.<br>
+    Source (MIT): <a href="https://github.com/michaelxdips/NiroWear">NiroWear</a> ·
+    <a href="PRIVACY.md">Privacy</a> · <a href="SECURITY.md">Security</a> ·
+    <a href="https://github.com/michaelxdips/NiroWear-Beta/security/advisories/new">Report a vulnerability</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var frames = Array.prototype.slice.call(document.querySelectorAll(".dial img"));
+  var dots = Array.prototype.slice.call(document.querySelectorAll(".dots button"));
+  var cap = document.querySelector(".dial-cap");
+  var labels = [
+    "1 · Before — ask with keyboard or voice",
+    "2 · During — answers arrive, Stop keeps partial text",
+    "3 · Answer — a document, not a bubble",
+    "4 · Pause — pan wide code sideways",
+    "5 · Tables — labelled records, not a grid",
+    "6 · After — history resumes conversations"
+  ];
+  function show(i) {
+    frames.forEach(function (f, k) { f.classList.toggle("on", k === i); });
+    dots.forEach(function (d, k) { d.setAttribute("aria-selected", k === i ? "true" : "false"); });
+    if (cap) cap.textContent = labels[i] || labels[0];
+  }
+  dots.forEach(function (d, i) {
+    d.addEventListener("click", function () { show(i); });
+  });
+  show(0);
+})();
+</script>
+
+</body>
+</html>
