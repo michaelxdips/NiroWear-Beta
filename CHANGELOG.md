@@ -2,6 +2,27 @@
 
 Published binary history and completed public documentation changes.
 
+## 0.1.0 - stable cut, 2026-11-03
+
+[Published release](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0/NiroWear-0.1.0.apk)
+
+Stable cut from green tree `1b389a4` + version bump (versionCode `10`).
+Same beta lineage signing identity
+(cert SHA-256 `7D:4E:6E:99:82:1D:90:4F:23:90:0B:D4:E0:CA:D5:B6:4B:1A:27:33:A2:82:43:DC:C8:AB:9D:6E:27:68:AB:E3`).
+
+APK SHA256: `319AE1CFBC6EE738F0B5B8B4C185F1AB8EBF3718A2B3D2FC43AB612D51934D71`, 3609553 bytes.
+
+Gates re-run on the stable tree: JVM 176/176 (38 suites, 0 failures/errors/skips),
+lint 0 errors (1 warning, 1 hint), connected suite 48/48 on emulator
+(XML ts=2026-11-02T20:10:22). Release assemble clean, installed and verified
+(`versionCode=10 versionName=0.1.0`).
+
+Honest remaining gates (disclosed, not blocking): live provider smoke skipped
+per owner order (no owner-typed key on emulator; route to provider proven
+reachable via TLS at smoke time); owner hardware sheet steps pending; TalkBack
+pass open; native-math licence review open (JLaTeXMath exception ships in
+`assets/legal/`).
+
 ## 0.1.0-beta.8 - 2026-11-02
 
 [Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.8) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.8/NiroWear-0.1.0-beta.8.apk)
