@@ -2,6 +2,27 @@
 
 Published binary history and completed public documentation changes.
 
+## 0.1.0-beta.7 - 2026-11-02
+
+[Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.7) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.7/NiroWear-0.1.0-beta.7.apk)
+
+- **Renderer keeps content the parser silently dropped.** Display math inside a quote
+  or list emits a Math block with delimiters preserved; container stripping skips
+  fenced lines; flattening preserves document order and keeps code/math nodes;
+  over-wide rows get an explicit more-marker; mid-line `$$` is literal unless
+  line-start or post-whitespace.
+- **Security hardening.** Keystore-entry deletion on rotation failure (fail-closed);
+  pairing screen states the real threat model; pairing read bounded, parse memo LRU-capped.
+- **Site demo is a watch.** `index.html` wraps the replay in a 466×466 round frame
+  with STOPPED copy, Retry, model switch, and a measured follow/scroll readout.
+
+Package `com.nirowear`, versionCode `8`, nondebuggable; same beta-only signing identity
+(cert SHA-256 `7D:4E:6E:99:82:1D:90:4F:23:90:0B:D4:E0:CA:D5:B6:4B:1A:27:33:A2:82:43:DC:C8:AB:9D:6E:27:68:AB:E3`).
+
+APK SHA256: `4fbe6db9ba4633662986128c5cd12865d5296af6638f28a15071212552167ea1`, 3609553 bytes.
+
+JVM 176/176, ktlint 0 errors, connected suite 48/48 on emulator (Task 2 XML ts=2026-11-02T06:58:50).
+
 ## 0.1.0-beta.6 - 2026-10-22
 
 [Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.6) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.6/NiroWear-0.1.0-beta.6.apk)
