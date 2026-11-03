@@ -217,7 +217,7 @@ Read [contribution guidance](CONTRIBUTING.md) before submitting. Keep public req
 
 Copyright © 2026 Stephen Michael, for first-party NiroWear material.
 
-**Application source is MIT licensed** and public at [github.com/michaelxdips/NiroWear](https://github.com/michaelxdips/NiroWear). This repository remains the distribution point for signed release APKs and user documentation. See [COPYRIGHT.md](COPYRIGHT.md) for the split between the two repositories.
+**Application source is MIT licensed** and public at [github.com/michaelxdips/NiroWear](https://github.com/michaelxdips/NiroWear), which is also the distribution point for new releases (stable `v0.1.0` onward). This repository is a frozen archive: historical beta APKs, the user guides, and the release history stay valid, but no new builds land here. See [COPYRIGHT.md](COPYRIGHT.md) for the split between the two repositories.
 
 One bundled dependency is not permissive: `jlatexmath-android` is GPL v2-or-later **with an independent-module linking exception**, which explicitly permits linking it with MIT code and distributing the result under terms of your choice. The GPL text, the exception and a corresponding-source pointer ship inside the app. Third-party components, icons and other materials retain their respective owners' rights and license terms.
 
