@@ -63,7 +63,7 @@ Select a screenshot to jump to its feature guide below. The [table view](#read-t
 
 All six screenshots on this page are genuine, uncropped **466 × 466 emulator captures**, displayed smaller for browsing. They illustrate the workflow; they are not beta.6-specific visual verification of one continuous recorded chat. Each captures one scroll position, not an entire response. They are not mockups and not proof of physical-watch compatibility. Provider screens are capture-protected, so no credential-screen image is included.
 
-## Explore the published beta
+## Explore the published release
 
 Expand a section for controls, examples, and limits. The README covers everyday use; linked guide sections add detailed setup and recovery steps.
 
@@ -124,7 +124,7 @@ Assistant output is parsed into semantic blocks — headings, paragraphs, lists,
 
 **Tables** become labelled vertical records instead of a four-column grid squeezed into 466 px. No cell is dropped and no column is silently hidden.
 
-**Math** is typeset natively in beta.6 and later: fractions, roots, powers, subscripts, integrals, summations, limits, matrices, cases and aligned equations render as formulas rather than LaTeX source. A wide formula pans; it is never shrunk into illegibility. Input the renderer deliberately refuses — file-inclusion macros, macro definitions, unbalanced braces — falls back to readable source text instead of rendering blank.
+**Math** is typeset natively since beta.6 and in 0.1.0: fractions, roots, powers, subscripts, integrals, summations, limits, matrices, cases and aligned equations render as formulas rather than LaTeX source. A wide formula pans; it is never shrunk into illegibility. Input the renderer deliberately refuses — file-inclusion macros, macro definitions, unbalanced braces — falls back to readable source text instead of rendering blank.
 
 **Links** open through the system handler, and only `http`/`https` targets with a host are accepted.
 
@@ -217,7 +217,7 @@ Read [contribution guidance](CONTRIBUTING.md) before submitting. Keep public req
 
 Copyright © 2026 Stephen Michael, for first-party NiroWear material.
 
-**Application source is MIT licensed** and public at [github.com/michaelxdips/NiroWear](https://github.com/michaelxdips/NiroWear). This repository remains the distribution point for signed beta APKs and user documentation. See [COPYRIGHT.md](COPYRIGHT.md) for the split between the two repositories.
+**Application source is MIT licensed** and public at [github.com/michaelxdips/NiroWear](https://github.com/michaelxdips/NiroWear). This repository remains the distribution point for signed release APKs and user documentation. See [COPYRIGHT.md](COPYRIGHT.md) for the split between the two repositories.
 
 One bundled dependency is not permissive: `jlatexmath-android` is GPL v2-or-later **with an independent-module linking exception**, which explicitly permits linking it with MIT code and distributing the result under terms of your choice. The GPL text, the exception and a corresponding-source pointer ship inside the app. Third-party components, icons and other materials retain their respective owners' rights and license terms.
 

@@ -153,7 +153,7 @@ Retry does not keep alternate variants. It is a new request, not a continuation 
 
 Switching does not branch or erase the current conversation. Earlier assistant messages retain the provider/model labels that produced them. Sending after a switch shares the retained linear context with the newly selected endpoint; use **New chat** first if you do not want that context sent there.
 
-History stores user and assistant text locally, including original assistant Markdown. Conversation text is not separately encrypted. There is no NiroWear cloud backup, user-facing history export, or conversation deletion control in this beta. Uninstalling or clearing data can permanently remove local history. Content restoration and exact reader-position restoration are not the same guarantee; full signed-beta restoration coverage is incomplete.
+History stores user and assistant text locally, including original assistant Markdown. Conversation text is not separately encrypted. There is no NiroWear cloud backup, user-facing history export, or conversation deletion control in 0.1.0. Uninstalling or clearing data can permanently remove local history. Content restoration and exact reader-position restoration are not the same guarantee; restoration coverage is incomplete.
 
 ## Reading formatted content
 

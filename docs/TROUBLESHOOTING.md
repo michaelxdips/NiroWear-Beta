@@ -11,7 +11,7 @@ For published **0.1.0**. Start with the symptom below, preserve valuable data, a
 - Stop repeated sends or validations if they keep failing; requests may incur provider charges.
 - Do not clear data, uninstall, delete a provider, or disable secure-screen protection as a first troubleshooting step.
 
-**Uninstalling or clearing app data can permanently remove local history, settings, and access to stored keys. This beta has no user-facing conversation export. Never post keys, authentication headers, pairing codes, private conversations, raw diagnostic dumps, or unredacted credential-screen captures.**
+**Uninstalling or clearing app data can permanently remove local history, settings, and access to stored keys. 0.1.0 has no user-facing conversation export. Never post keys, authentication headers, pairing codes, private conversations, raw diagnostic dumps, or unredacted credential-screen captures.**
 
 ## Installation and updates
 
@@ -36,7 +36,7 @@ Package: `com.nirowear`; versionCode: `10`. Certificate SHA256:
 7d4e6e99821d904f23900bd4e0cad5b64b1a2733a28243dcc8ab9d6e2768abe3
 ```
 
-The nondebuggable beta uses an owner-approved Android Debug certificate, not production-grade signing. A matching filename alone does not establish a matching APK or certificate.
+The nondebuggable release uses an owner-approved Android Debug certificate, not production-grade signing. A matching filename alone does not establish a matching APK or certificate.
 
 ## Provider setup and model discovery
 
@@ -88,7 +88,7 @@ No automatic replay occurs after a failed or interrupted stream. Pressing **Retr
 
 ## FAQ
 
-### Is the beta free to download? Does chat cost money?
+### Is it free to download? Does chat cost money?
 
 The published APK is available to download without a NiroWear purchase. It does not include API credit or an AI subscription. Your endpoint may charge for generation, validation, retry, and edit/resend under its own pricing.
 
@@ -110,7 +110,7 @@ The releases carry an APK attached to each. The sidebar's tag count does not mea
 
 ### Is every Wear OS 3+ watch supported?
 
-No compatibility guarantee is made. Wear OS 3+ and Android API 30+ are minimum requirements. The reference evaluation setup is a round 466 × 466 Wear OS 5 / API 34 emulator. Physical-watch compatibility, battery, thermals, accessibility, and full signed-beta reader coverage remain incompletely verified.
+No compatibility guarantee is made. Wear OS 3+ and Android API 30+ are minimum requirements. The reference evaluation setup is a round 466 × 466 Wear OS 5 / API 34 emulator. Physical-watch compatibility, battery, thermals, accessibility, and reader coverage remain incompletely verified.
 
 ### Does NiroWear include an AI subscription or account?
 
