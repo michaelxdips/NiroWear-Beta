@@ -1,8 +1,8 @@
 # NiroWear user guide
 
-This guide describes **0.1.0-beta.2**, the published sideload beta. Start with installation and one short keyboard prompt; use the later sections when you need more control.
+This guide describes **0.1.0**, the published sideload stable. Start with installation and one short keyboard prompt; use the later sections when you need more control.
 
-[Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.2/NiroWear-0.1.0-beta.2.apk) · [README](../README.md) · [Troubleshooting](TROUBLESHOOTING.md)
+[Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0/app-release.apk) · [README](../README.md) · [Troubleshooting](TROUBLESHOOTING.md)
 
 ## What you need
 
@@ -15,19 +15,19 @@ NiroWear has no account service or included API credit. Model and endpoint avail
 
 ## Install the APK
 
-1. Download [NiroWear-0.1.0-beta.2.apk](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.2/NiroWear-0.1.0-beta.2.apk). Do not use GitHub's “Source code” ZIP or tarball; those contain public documentation, not the app.
+1. Download [app-release.apk](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0/app-release.apk). Do not use GitHub's “Source code” ZIP or tarball; those contain public documentation, not the app.
 2. Calculate its SHA256. On Windows PowerShell, run:
 
    ```powershell
-   Get-FileHash -Algorithm SHA256 .\NiroWear-0.1.0-beta.2.apk
+   Get-FileHash -Algorithm SHA256 .\app-release.apk
    ```
 
-   On Linux, use `sha256sum NiroWear-0.1.0-beta.2.apk`; on macOS, use `shasum -a 256 NiroWear-0.1.0-beta.2.apk`.
+   On Linux, use `sha256sum app-release.apk`; on macOS, use `shasum -a 256 app-release.apk`.
 
    Expected value, ignoring letter case:
 
    ```text
-   d524c3bae5a26ab5cac7c8c3b80f62824b1ecc82506f180ca005954eeaeaa0b6
+   319AE1CFBC6EE738F0B5B8B4C185F1AB8EBF3718A2B3D2FC43AB612D51934D71
    ```
 
    If it differs, do not install. Download again from the release link and check again.
@@ -43,17 +43,17 @@ NiroWear has no account service or included API credit. Model and endpoint avail
 4. Identify the intended watch's serial from `adb devices -l`. Install only to that target:
 
    ```text
-   adb -s <serial> install NiroWear-0.1.0-beta.2.apk
+   adb -s <serial> install app-release.apk
    ```
 
    For an existing same-certificate installation, use:
 
    ```text
-   adb -s <serial> install -r NiroWear-0.1.0-beta.2.apk
+   adb -s <serial> install -r app-release.apk
    ```
 5. Open NiroWear from the watch's app launcher. Disable debugging when you no longer need it.
 
-The package is `com.nirowear`, version `0.1.0-beta.2`, versionCode `3`. The APK is nondebuggable but uses the same owner-approved Android Debug certificate as beta.1 for updates, not production-grade signing.
+The package is `com.nirowear`, version `0.1.0`, versionCode `10`. The APK is nondebuggable but uses the same lineage Android Debug certificate as prior betas for updates, not production-grade signing.
 
 **Do not uninstall or clear app data to fix a certificate mismatch. Either action can permanently remove history, settings, and access to stored keys.** See [installation troubleshooting](TROUBLESHOOTING.md#installation-and-updates).
 

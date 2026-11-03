@@ -8,9 +8,9 @@
 
 BYOK AI chat for Wear OS. Type or dictate a question, read the answer as it arrives, come back to the whole conversation later.
 
-**Public beta · 0.1.0-beta.6 · Sideload only · Source now MIT**
+**Stable · 0.1.0 · Sideload only · Source MIT**
 
-[**Download 0.1.0-beta.6**](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.6/NiroWear-0.1.0-beta.6.apk) · [Release notes](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.6) · [Source code](https://github.com/michaelxdips/NiroWear) · [Install guide](docs/USER_GUIDE.md#install-the-apk)
+[**Download 0.1.0**](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0/app-release.apk) · [Release notes](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0) · [Source code](https://github.com/michaelxdips/NiroWear) · [Install guide](docs/USER_GUIDE.md#install-the-apk)
 
 **Bring your own API key.** Generation needs internet access and may incur provider charges; no API credit is included.
 
@@ -160,13 +160,13 @@ There is no store listing. The signed APK is the supported install path.
 
 | | |
 |---|---|
-| Latest | [0.1.0-beta.6](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.6) · versionCode 7 · 3,593,274 bytes |
-| SHA-256 | `bd9c7eb968dc3b10c873591a79c81987c147980c480620af464dc2c65154fcb9` |
+| Latest | [0.1.0](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0) · versionCode 10 · 3,609,553 bytes |
+| SHA-256 | `319AE1CFBC6EE738F0B5B8B4C185F1AB8EBF3718A2B3D2FC43AB612D51934D71` |
 | Signing | Same beta identity as every prior release, so upgrades keep your conversations |
 | Requires | Wear OS 3 (API 30) or newer |
 
 ```text
-adb install -r NiroWear-0.1.0-beta.6.apk
+adb install -r app-release.apk
 ```
 
 Step-by-step device and wireless-ADB instructions: [install the APK](docs/USER_GUIDE.md#install-the-apk).

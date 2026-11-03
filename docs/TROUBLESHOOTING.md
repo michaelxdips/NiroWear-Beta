@@ -1,6 +1,6 @@
 # Troubleshooting and FAQ
 
-For published **0.1.0-beta.2**. Start with the symptom below, preserve valuable data, and report what you observed without secrets. Historical beta.1 identity remains in the changelog.
+For published **0.1.0**. Start with the symptom below, preserve valuable data, and report what you observed without secrets. Historical beta identity remains in the changelog.
 
 [User guide](USER_GUIDE.md) · [README](../README.md) · [Feedback forms](https://github.com/michaelxdips/NiroWear-Beta/issues/new/choose)
 
@@ -17,7 +17,7 @@ For published **0.1.0-beta.2**. Start with the symptom below, preserve valuable 
 
 | Symptom | Safe steps | Useful report details |
 |---|---|---|
-| APK checksum differs | Do not install. Download again from the [published release](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.2) and calculate SHA256 again. | File name, file size, computed hash, download URL; no personal file paths needed. |
+| APK checksum differs | Do not install. Download again from the [published release](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0) and calculate SHA256 again. | File name, file size, computed hash, download URL; no personal file paths needed. |
 | Watch does not appear in ADB | Check the watch's debugging screen and connection. Run `adb devices -l`. For supported wireless debugging, distinguish pairing and connection ports. | Watch/OS, Platform Tools version, sanitized error; omit addresses and pairing codes if private. |
 | `INSTALL_FAILED_OLDER_SDK` | Check Android API level. The APK requires API 30+ and Wear OS 3+. Do not try to bypass the requirement. | Watch model, Wear OS and Android versions/API if known. |
 | `INSTALL_FAILED_UPDATE_INCOMPATIBLE` or certificate mismatch | Confirm package and certificate against the published identity. Keep the existing app and data; do not uninstall to bypass the mismatch. | Existing version, APK source, exact error, whether it is a new install or update. |
@@ -27,10 +27,10 @@ For published **0.1.0-beta.2**. Start with the symptom below, preserve valuable 
 Published APK SHA256:
 
 ```text
-d524c3bae5a26ab5cac7c8c3b80f62824b1ecc82506f180ca005954eeaeaa0b6
+319AE1CFBC6EE738F0B5B8B4C185F1AB8EBF3718A2B3D2FC43AB612D51934D71
 ```
 
-Package: `com.nirowear`; versionCode: `2`. Certificate SHA256:
+Package: `com.nirowear`; versionCode: `10`. Certificate SHA256:
 
 ```text
 7d4e6e99821d904f23900bd4e0cad5b64b1a2733a28243dcc8ab9d6e2768abe3
@@ -102,11 +102,11 @@ No. NiroWear is an independent client owned by Stephen Michael. Provider names i
 
 ### Which version can I download?
 
-The current published release is [0.1.0-beta.2](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.2), versionCode `3`, with one APK asset. Historical beta.1 remains available unchanged. Use the explicit download link, not a generic stable “latest” URL or automatic source archive.
+The current published release is [0.1.0](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0), versionCode `10`, with one APK asset (`app-release.apk`). Historical betas remain available unchanged. Use the explicit download link, not an automatic source archive.
 
 ### Why does the repository sidebar emphasize tags?
 
-The betas have published GitHub Releases marked **Pre-release**, with an APK attached to each. The sidebar's tag count does not mean the APK is missing. GitHub's latest-release route selects a non-prerelease release and is unavailable here. Use [Download Beta](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.2/NiroWear-0.1.0-beta.2.apk) or the explicit release page. GitHub also lists automatic source archives; those are not the Android application.
+The releases carry an APK attached to each. The sidebar's tag count does not mean the APK is missing. Use [Download Stable](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0/app-release.apk) or the explicit release page. GitHub also lists automatic source archives; those are not the Android application.
 
 ### Is every Wear OS 3+ watch supported?
 
