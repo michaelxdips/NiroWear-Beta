@@ -4,7 +4,7 @@ Published binary history and completed public documentation changes.
 
 ## 0.1.0 - stable cut, 2026-11-03
 
-[Published release](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0/NiroWear-0.1.0.apk)
+[Published release](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0/app-release.apk)
 
 Stable cut from green tree `1b389a4` + version bump (versionCode `10`).
 Same beta lineage signing identity
@@ -25,7 +25,7 @@ pass open; native-math licence review open (JLaTeXMath exception ships in
 
 ## 0.1.0-beta.8 - 2026-11-02
 
-[Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.8) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.8/NiroWear-0.1.0-beta.8.apk)
+[Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.8) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.8/app-release-beta8.apk)
 
 - **Three reported UI fixes on beta.7.** Failure text renders once (the transient copy
   is suppressed when the persisted assistant row already holds the same string; cleared
@@ -44,7 +44,7 @@ verified on emulator (`versionCode=9 versionName=0.1.0-beta.8`).
 
 ## 0.1.0-beta.7 - 2026-11-02
 
-[Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.7) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.7/NiroWear-0.1.0-beta.7.apk)
+[Published prerelease](https://github.com/michaelxdips/NiroWear-Beta/releases/tag/v0.1.0-beta.7) · [Download APK](https://github.com/michaelxdips/NiroWear-Beta/releases/download/v0.1.0-beta.7/app-release-beta7.apk)
 
 - **Renderer keeps content the parser silently dropped.** Display math inside a quote
   or list emits a Math block with delimiters preserved; container stripping skips
